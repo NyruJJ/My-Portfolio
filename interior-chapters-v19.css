@@ -1,0 +1,65 @@
+/* v19 — distinct constellations, restored left-side timeline, orbital education.
+   Home, Projects, chapter switching, and Contact are unchanged. */
+
+/* Starfield canvas replaces the oversized fixed web only. Keep the four-card skill map. */
+#expertise .ambient-proximity-graph{display:none!important}
+#expertise .constellation-field{position:absolute;inset:0;display:block;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.96}
+#expertise .expertise-head,#expertise .expertise-grid{position:relative;z-index:1}
+#expertise .expertise-network-panel{isolation:isolate}
+
+/* Restore v17's compact left rail and wide job cards. */
+@media(min-width:701px){
+#experience .timeline{--v17-date-col:clamp(130px,12vw,190px);--v17-rail-col:68px}
+#experience .timeline-item{display:grid!important;grid-template-columns:var(--v17-date-col) var(--v17-rail-col) minmax(0,1fr)!important;grid-template-rows:auto auto!important;column-gap:0!important;row-gap:0!important;padding:19px 0 26px!important}
+#experience .timeline-item::before{left:calc(var(--v17-date-col) + (var(--v17-rail-col)/2) - 17px)!important;top:44px!important;width:34px!important;height:34px!important;z-index:4!important;background:#092332!important;box-shadow:0 0 0 4px #091b2a!important}
+#experience .timeline-item.is-career-active::before,#experience .timeline-item:has(details[open])::before,#experience .timeline-item:hover::before{background:#147779!important;color:#fff!important;border-color:#83ffeb!important;box-shadow:0 0 0 4px #091b2a,0 0 22px rgba(79,246,218,.60)!important}
+#experience .timeline-item::after{display:none!important}
+#experience .timeline-item>.job-time,#experience .timeline-item:nth-child(even)>.job-time{grid-column:1!important;grid-row:1!important;justify-self:end!important;align-self:start!important;text-align:right!important;padding:51px 14px 0 0!important;max-width:100%!important}
+#experience .timeline-item>.job-content,#experience .timeline-item:nth-child(even)>.job-content{grid-column:3!important;grid-row:1!important;width:100%!important;margin:0!important}
+#experience .timeline-item>details.operations-detail,#experience .timeline-item:nth-child(even)>details.operations-detail{grid-column:3!important;grid-row:2!important;width:100%!important;margin:12px 0 0!important;position:relative!important;left:auto!important;right:auto!important;z-index:2!important}
+#experience .timeline-item>.job-content{padding:25px 27px 26px!important}
+#experience .operations-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
+#experience .operations-context{grid-template-columns:130px minmax(0,1fr);gap:8px}
+}
+@media(min-width:701px) and (max-width:1220px){
+#experience .timeline{--v17-date-col:120px;--v17-rail-col:58px}
+#experience .operations-grid,#experience .operations-context{grid-template-columns:1fr!important}
+}
+@media(max-width:700px){
+#experience .timeline-item::after{display:none!important}
+}
+/* Segmented rails are genuinely absent behind each numbered circle. */
+#experience .timeline::before,#experience .timeline::after{display:none!important}
+#experience .timeline{position:relative}
+#experience .career-segment-layer{position:absolute;inset:0;pointer-events:none;z-index:0}
+#experience .career-segment{position:absolute;width:2px;border-radius:2px;overflow:visible;background:linear-gradient(to bottom,rgba(81,196,208,.40),rgba(74,163,176,.25));}
+#experience .career-segment>span{display:block;width:100%;height:0;background:linear-gradient(180deg,#91ffee,#4ce9cd,#269aab);box-shadow:0 0 10px rgba(82,237,211,.55);border-radius:2px;transition:height .15s linear}
+#experience .timeline-item{z-index:1}
+#experience .timeline-item>.job-content,#experience .timeline-item>details.operations-detail{position:relative;z-index:2}
+
+/* Academic orbital display: a slow, large layered instrument *behind* the cards. */
+#education.education-section{isolation:isolate}
+#education .academic-orbit{position:absolute;top:2%;right:-5%;width:min(75vw,960px);height:min(75vw,960px);aspect-ratio:1;pointer-events:none;z-index:0;opacity:.64;filter:drop-shadow(0 0 18px rgba(79,225,205,.055))}
+#education .academic-orbit .orbit-shell{position:absolute;inset:0;border-radius:50%;transform-origin:center;animation:v19-orbit-spin 65s linear infinite}
+#education .academic-orbit .orbit-shell::before{content:"";position:absolute;inset:0;border-radius:50%;border:1px solid rgba(64,217,208,.21);transition:border-color .45s ease,box-shadow .45s ease}
+#education .academic-orbit .orbit-shell.orbit-one{inset:8%;animation-duration:76s}
+#education .academic-orbit .orbit-shell.orbit-one::before{border-style:dashed;border-width:1px;border-color:rgba(87,219,203,.26)}
+#education .academic-orbit .orbit-shell.orbit-two{inset:19%;animation-duration:54s;animation-direction:reverse}
+#education .academic-orbit .orbit-shell.orbit-two::before{border:1px dotted rgba(82,219,208,.35)}
+#education .academic-orbit .orbit-shell.orbit-three{inset:30%;animation-duration:43s}
+#education .academic-orbit .orbit-shell.orbit-three::before{border:1px solid rgba(78,212,202,.30)}
+#education .academic-orbit .orbit-shell.orbit-four{inset:40%;animation-duration:37s;animation-direction:reverse}
+#education .academic-orbit .orbit-shell.orbit-four::before{border:1px dashed rgba(96,241,219,.32)}
+#education .academic-orbit .orbit-shell::after{content:"";position:absolute;top:-3px;left:50%;width:6px;height:6px;border-radius:50%;background:#74ffdf;box-shadow:0 0 11px #63edce;opacity:.55;transform:translateX(-50%)}
+#education .academic-orbit .orbit-radial{position:absolute;inset:10%;border-radius:50%;background:repeating-conic-gradient(from 3deg,rgba(74,239,222,.095) 0 1deg,transparent 1deg 15deg);mask:radial-gradient(circle,transparent 65%,#000 66% 67%,transparent 68%);-webkit-mask:radial-gradient(circle,transparent 65%,#000 66% 67%,transparent 68%);animation:v19-orbit-spin 95s linear infinite reverse}
+#education .academic-orbit .orbit-core{position:absolute;inset:47%;border-radius:50%;background:rgba(82,218,205,.09);border:1px solid rgba(90,234,210,.3);box-shadow:0 0 24px rgba(83,248,219,.14)}
+#education .academic-orbit .orbit-shell.is-lit::before{border-color:rgba(110,255,226,.86)!important;box-shadow:0 0 18px rgba(92,251,218,.29),inset 0 0 18px rgba(92,251,218,.12)}
+#education .academic-orbit .orbit-shell.is-lit::after{opacity:1;box-shadow:0 0 16px rgba(101,255,223,1)}
+#education .shell{position:relative;z-index:1}
+@keyframes v19-orbit-spin{to{transform:rotate(360deg)}}
+@media(max-width:900px){#education .academic-orbit{width:90vw;height:90vw;right:-30%;top:13%;opacity:.42}}
+@media(max-width:600px){#education .academic-orbit{width:110vw;height:110vw;right:-58%;top:18%;opacity:.28}}
+@media(prefers-reduced-motion:reduce){
+#education .academic-orbit .orbit-shell,#education .academic-orbit .orbit-radial{animation:none!important}
+#experience .career-segment>span{transition:none}
+}

@@ -8,29 +8,118 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="Nyru J. Jackson | Networking, Security & Systems Portfolio">
   <meta property="og:description" content="Networks. Security. Systems. Explore selected work, hands-on IT experience, and technical case studies.">
-  <title>Nyru J. Jackson — Networking, Systems & Cybersecurity Portfolio</title>
+  <title>Nyru J. Jackson — Portfolio 2.0 — Signal Deck v20</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="motion.css">
+  <link rel="stylesheet" href="gallery.css">
+  <link rel="stylesheet" href="sheikah-nav.css">
+  <link rel="stylesheet" href="rune-selector.css">
+  <link rel="stylesheet" href="rune-v8.css">
+  <link rel="stylesheet" href="horizontal-chapters.css">
+  <link rel="stylesheet" href="signal-deck.css">
+  <link rel="stylesheet" href="signal-deck-v14.css">
+  <link rel="stylesheet" href="interior-chapters-v15.css">
+  <link rel="stylesheet" href="interior-chapters-v16.css">
+  <link rel="stylesheet" href="interior-chapters-v17.css">
+  <link rel="stylesheet" href="interior-chapters-v18.css">
+  <link rel="stylesheet" href="interior-chapters-v19.css">
+  <link rel="stylesheet" href="light-theme-v20.css">
   <script src="script.js" defer></script>
+  <script src="motion.js" defer></script>
+  <script src="gallery.js" defer></script>
+  <script src="edge-grid.js" defer></script>
+  <script src="theme-word.js" defer></script>
+  <script src="rune-selector.js" defer></script>
+  <script src="horizontal-chapters.js" defer></script>
+  <script src="chapter-life-v14.js" defer></script>
+  <script src="interior-chapters-v17.js" defer></script>
+  <script src="interior-chapters-v18.js" defer></script>
+  <script src="interior-chapters-v19.js" defer></script>
+
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
   <div class="noise" aria-hidden="true"></div>
-  <header class="header" id="top">
-    <div class="header-inner shell">
-      <a href="#top" class="brand" aria-label="Nyru Jackson, back to top"><span class="brand-mark">NJ<span class="accent-dot">.</span></span><span class="brand-label">NYRU JACKSON<span class="brand-sub">NETWORKING / SECURITY / SYSTEMS</span></span></a>
-      <nav class="primary-nav" aria-label="Primary navigation" id="primary-nav">
-        <a href="#expertise">Expertise</a><a href="#work">Work</a><a href="#experience">Experience</a><a href="#education">Education</a><a href="#contact">Contact</a>
-      </nav>
-      <div class="header-controls">
-        <button type="button" class="icon-button theme-toggle" id="theme-toggle" aria-label="Switch color theme" title="Switch color theme"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20.5 14.3A8.8 8.8 0 0 1 9.7 3.5a8.9 8.9 0 1 0 10.8 10.8Z"/></svg></button>
-        <button type="button" class="icon-button menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Open navigation"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
-        <a class="header-contact" href="mailto:nyruj84@hmail.com">Let's connect <span aria-hidden="true">↗</span></a>
+  <header class="sheikah-header" id="top">
+    <a class="sheikah-brand" href="#top" aria-label="Back to top">
+      <span class="sheikah-brand-title">NYRU JACKSON</span>
+      <span class="sheikah-brand-dot" aria-hidden="true"></span>
+      <span class="sheikah-brand-sub">PORTFOLIO / 2.0</span>
+    </a>
+
+    <div class="sheikah-controls">
+      <button type="button" id="chapter-home" class="chapter-home-button" aria-label="Go to home section" title="Back to Home">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 10 9-7 9 7"/><path d="M5 9.5V21h14V9.5M9 21v-7h6v7"/></svg>
+        <span>Home</span>
+      </button>
+      <button type="button" class="theme-toggle sheikah-theme" id="theme-toggle" aria-label="Switch color theme">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20.5 14.3A8.8 8.8 0 0 1 9.7 3.5a8.9 8.9 0 1 0 10.8 10.8Z"/></svg>
+        <span id="theme-word">Dark</span>
+      </button>
+
+      <div class="sheikah-menu-wrap">
+        <button type="button" id="menu-toggle" class="sheikah-trigger" aria-controls="primary-nav compact-nav" aria-expanded="true" aria-label="Close explorer">
+          <span class="sheikah-trigger-core" aria-hidden="true">
+            <i></i><i></i><i></i>
+          </span>
+          <span class="sheikah-trigger-copy">
+            <span class="sheikah-trigger-label" id="explorer-trigger-label">Close</span>
+            <span class="sheikah-trigger-sub" id="explorer-trigger-sub">Explorer</span>
+          </span>
+        </button>
+
+        <nav id="primary-nav" class="rune-selector open" aria-label="Portfolio sections">
+          <div class="rune-selector-top"><span class="rune-top-decoration" aria-hidden="true">✧</span><span>SELECT A SECTION</span><button type="button" class="rune-close" id="rune-close" aria-label="Close navigation">×</button></div>
+          <div class="rune-tiles" role="list">
+            <a href="#work" class="rune-tile" role="listitem" data-label="Projects" data-detail="Case studies and technical projects"><span class="rune-glyph" aria-hidden="true">▣</span><span class="rune-name">Projects</span></a>
+            <a href="#expertise" class="rune-tile" role="listitem" data-label="Expertise" data-detail="Networks, systems &amp; security"><span class="rune-glyph" aria-hidden="true">◇</span><span class="rune-name">Expertise</span></a>
+            <a href="#experience" class="rune-tile" role="listitem" data-label="Experience" data-detail="Professional background"><span class="rune-glyph" aria-hidden="true">✦</span><span class="rune-name">Experience</span></a>
+            <a href="#education" class="rune-tile" role="listitem" data-label="Education" data-detail="Studies and credentials"><span class="rune-glyph" aria-hidden="true">△</span><span class="rune-name">Education</span></a>
+            <a href="#contact" class="rune-tile" role="listitem" data-label="Contact" data-detail="Get in touch"><span class="rune-glyph" aria-hidden="true">⌁</span><span class="rune-name">Contact</span></a>
+          </div>
+          <div class="rune-detail"><strong id="rune-detail-title">Choose your path</strong><span id="rune-detail-desc">Select a rune to explore the portfolio.</span></div>
+          <div class="rune-selector-footer"><span>PORTFOLIO / 2.0</span><span>NYRU JACKSON</span></div>
+        </nav>
+        <nav id="compact-nav" class="rune-selector rune-compact open" aria-label="Portfolio sections compact">
+          <div class="rune-selector-top"><span class="rune-top-decoration" aria-hidden="true">✧</span><span>SELECT A SECTION</span><button type="button" class="rune-close" id="rune-close-compact" aria-label="Close navigation">×</button></div>
+          <div class="rune-tiles" role="list">
+            <a href="#work" class="rune-tile" role="listitem" data-label="Projects" data-detail="Case studies and technical projects"><span class="rune-glyph" aria-hidden="true">▣</span><span class="rune-name">Projects</span></a>
+            <a href="#expertise" class="rune-tile" role="listitem" data-label="Expertise" data-detail="Networks, systems &amp; security"><span class="rune-glyph" aria-hidden="true">◇</span><span class="rune-name">Expertise</span></a>
+            <a href="#experience" class="rune-tile" role="listitem" data-label="Experience" data-detail="Professional background"><span class="rune-glyph" aria-hidden="true">✦</span><span class="rune-name">Experience</span></a>
+            <a href="#education" class="rune-tile" role="listitem" data-label="Education" data-detail="Studies and credentials"><span class="rune-glyph" aria-hidden="true">△</span><span class="rune-name">Education</span></a>
+            <a href="#contact" class="rune-tile" role="listitem" data-label="Contact" data-detail="Get in touch"><span class="rune-glyph" aria-hidden="true">⌁</span><span class="rune-name">Contact</span></a>
+          </div>
+          <div class="rune-detail"><strong>Choose your path</strong><span>Select a rune to explore the portfolio.</span></div>
+          <div class="rune-selector-footer"><span>PORTFOLIO / 2.0</span><span>NYRU JACKSON</span></div>
+        </nav>
       </div>
     </div>
   </header>
 
+  <nav class="chapter-arrows" aria-label="Browse portfolio chapters">
+    <button type="button" class="chapter-arrow chapter-arrow-prev" id="chapter-prev" title="Previous section" aria-label="Previous chapter">
+      <span class="chapter-arrow-glyph" aria-hidden="true">‹</span>
+      <span class="chapter-arrow-copy" id="chapter-prev-label">Contact</span>
+    </button>
+    <button type="button" class="chapter-arrow chapter-arrow-next" id="chapter-next" title="Next section" aria-label="Next chapter">
+      <span class="chapter-arrow-copy" id="chapter-next-label">Work</span>
+      <span class="chapter-arrow-glyph" aria-hidden="true">›</span>
+    </button>
+    <div class="chapter-position" role="status" aria-live="polite" aria-atomic="true" id="chapter-position">01 / 06 · HOME</div>
+  </nav>
+
+  <div class="chapter-deck-fx" id="chapter-deck-fx" aria-hidden="true">
+    <span class="deck-screen-tint"></span>
+    <span class="deck-sweep"></span>
+    <span class="deck-label"><span class="deck-eyebrow" id="deck-eyebrow">PORTFOLIO // 02</span><span class="deck-name" id="deck-name">SELECTED WORK</span><span class="deck-line"></span></span>
+  </div>
+
   <main id="main">
+    <div class="opening-screen">
+      <div class="hero-grid-pattern" aria-hidden="true"></div>
+      <div class="edge-grid-reactive" aria-hidden="true"></div>
+      <div class="hero-code-streams" aria-hidden="true"><span class="code-stream stream-0">0F3A81B7E2C9</span><span class="code-stream stream-1">A79C40B3D0EF</span><span class="code-stream stream-2">011010101100</span><span class="code-stream stream-3">D8EF03A1B706</span><span class="code-stream stream-4">4F8C2E901D6A</span><span class="code-stream stream-5">9A72C0DB5F18</span><span class="code-stream stream-6">E4B8C107F2A9</span><span class="code-stream stream-7">02D7A6F9B103</span><span class="code-stream stream-8">8C42DA01F7B3</span><span class="code-stream stream-9">1F70B3A68E4D</span><span class="code-stream stream-10">B7A102FE403C</span><span class="code-stream stream-11">0A8BC53F219D</span></div>
     <section class="hero shell" aria-labelledby="hero-title">
       <div class="hero-copy">
         <div class="eyebrow"><span class="online-dot"></span> BUILDING THE NEXT GENERATION OF INFRASTRUCTURE</div>
@@ -48,45 +137,58 @@
 
     <section class="metrics-wrap" aria-label="At a glance">
       <div class="shell metrics">
-        <div class="metric"><strong>5<span>+</span></strong><span>Years of hands-on IT<br>experience</span></div>
-        <div class="metric"><strong>800<span>+</span></strong><span>ASIC devices supported<br>in current role</span></div>
-        <div class="metric"><strong>100<span>+</span></strong><span>Client accounts supported<br>at mining facility</span></div>
-        <div class="metric"><strong>08</strong><span>Featured technical<br>& strategic projects</span></div>
+        <div class="metric"><div class="metric-content"><strong>5<span>+</span></strong><span>Years of hands-on IT<br>experience</span></div></div>
+        <div class="metric"><div class="metric-content"><strong>800<span>+</span></strong><span>ASIC devices supported<br>in current role</span></div></div>
+        <div class="metric"><div class="metric-content"><strong>100<span>+</span></strong><span>Client accounts supported<br>at mining facility</span></div></div>
+        <div class="metric"><div class="metric-content"><strong>08</strong><span>Featured technical<br>& strategic projects</span></div></div>
       </div>
     </section>
 
-    <section class="feature-section" id="expertise" aria-labelledby="expertise-title"><div class="shell">
-      <div class="section-kicker"><span>01 / WHAT I BRING</span><span class="section-rule"></span></div>
-      <div class="expertise-head">
-        <div class="expertise-intro"><h2 id="expertise-title">Built for <em>the details.</em></h2><p>My experience crosses the full lifecycle of IT — from hardware and connectivity to architecture, access control, and technical documentation.</p></div>
-        <div class="expertise-network-panel" role="group" aria-label="Illustrative network infrastructure overview">
-          <div class="expertise-network-top"><span class="micro-label">INFRASTRUCTURE OVERVIEW</span><span>LAB / CONCEPT</span></div>
-          <svg class="network-diagram" viewBox="0 0 530 360" role="img" aria-label="Stylized network topology with connected endpoints and a central server, illustrative only">
-          <defs><linearGradient id="linegrad" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#3ef7ca"/><stop offset="1" stop-color="#42a4fa"/></linearGradient></defs>
-          <g class="diagram-grid"><path d="M0 60H530M0 120H530M0 180H530M0 240H530M0 300H530M60 0V360M120 0V360M180 0V360M240 0V360M300 0V360M360 0V360M420 0V360M480 0V360"/></g>
-          <g class="diagram-lines" stroke="url(#linegrad)" fill="none"><path d="M265 170L118 78M265 170L423 77M265 170L110 260M265 170L423 261M265 170L265 314"/></g>
-          <circle class="diagram-pulse" cx="265" cy="170" r="74" fill="none" stroke="#37e6c6" stroke-width="1" opacity=".35"/>
-          <g class="diagram-node small"><rect x="75" y="51" width="86" height="54" rx="11"/><path d="M91 68h53M91 78h39M91 88h21"/><circle cx="145" cy="88" r="4"/></g>
-          <g class="diagram-node small"><rect x="380" y="50" width="86" height="54" rx="11"/><path d="M396 67h53M396 77h38M396 87h21"/><circle cx="450" cy="87" r="4"/></g>
-          <g class="diagram-node small"><rect x="66" y="232" width="86" height="54" rx="11"/><path d="M82 249h53M82 259h38M82 269h21"/><circle cx="136" cy="269" r="4"/></g>
-          <g class="diagram-node small"><rect x="380" y="233" width="86" height="54" rx="11"/><path d="M396 250h53M396 260h38M396 270h21"/><circle cx="450" cy="270" r="4"/></g>
-          <g class="diagram-node small"><rect x="231" y="297" width="68" height="42" rx="9"/><path d="M244 313h38M244 323h25"/><circle cx="283" cy="323" r="3"/></g>
-          <g class="diagram-core"><rect x="207" y="122" width="116" height="96" rx="16"/><path d="M235 146h60v11h-60zM235 167h60v11h-60zM235 188h60v11h-60z"/><circle cx="287" cy="151" r="3"/><circle cx="287" cy="172" r="3"/><circle cx="287" cy="193" r="3"/></g>
-        </svg>
-          <div class="expertise-network-bottom"><span class="online-dot"></span> NETWORKS / SYSTEMS / SECURITY</div>
-        </div>
-      </div>
-      <div class="expertise-grid">
-        <article class="expertise-card"><span class="expertise-no">01</span><div class="expertise-symbol">⌘</div><h3>Networks & infrastructure</h3><p>IP addressing, subnetting, connectivity diagnostics, hardware deployment, uptime monitoring, and performance optimization.</p><div class="tag-list"><span>TCP/IP</span><span>Subnetting</span><span>Infrastructure</span></div></article>
-        <article class="expertise-card"><span class="expertise-no">02</span><div class="expertise-symbol">◇</div><h3>Cybersecurity operations</h3><p>System hardening, identity and access management, least privilege, network segmentation, and audit-log analysis.</p><div class="tag-list"><span>CIS Controls</span><span>Linux</span><span>pfSense</span></div></article>
-        <article class="expertise-card"><span class="expertise-no">03</span><div class="expertise-symbol">▦</div><h3>Data & information systems</h3><p>Relational database concepts, Microsoft Access forms and reports, SQL querying, data models, and documentation.</p><div class="tag-list"><span>SQL</span><span>Microsoft Access</span><span>EER</span></div></article>
-        <article class="expertise-card"><span class="expertise-no">04</span><div class="expertise-symbol">↗</div><h3>Problem-solving & delivery</h3><p>Turning goals into technical requirements, testing work, documenting solutions, and understanding operational trade-offs. Project management and business operations provide context for planning, documentation, and technical decision-making.</p><div class="tag-list"><span>Project planning</span><span>Testing</span><span>Documentation</span></div></article>
-      </div>
-    </div></section>
+    </div>
+
+    <section aria-labelledby="expertise-title" class="feature-section" id="expertise"><svg aria-hidden="true" class="expertise-ambient" preserveaspectratio="xMidYMid slice" viewbox="0 0 1500 820">
+<g fill="none" opacity=".36" stroke="currentColor" stroke-width="1.2"><path d="M0 180 225 86 490 250 760 126 1105 270 1500 75"></path><path d="M0 500 210 380 490 540 765 360 1080 580 1500 420"></path><path d="M210 380 225 86M490 250 490 540M765 360 760 126M1105 270 1080 580M0 500 490 250M490 540 1105 270"></path></g>
+<g fill="currentColor" opacity=".55"><circle cx="225" cy="86" r="4"></circle><circle cx="490" cy="250" r="4"></circle><circle cx="760" cy="126" r="4"></circle><circle cx="1105" cy="270" r="4"></circle><circle cx="490" cy="540" r="4"></circle><circle cx="1080" cy="580" r="4"></circle></g>
+</svg><div class="shell">
+<div class="section-kicker"><span>02 / WHAT I BRING</span><span class="section-rule"></span></div>
+<div class="expertise-head">
+<div class="expertise-intro"><h2 id="expertise-title">Built for <em>the details.</em></h2><p>My experience crosses the full lifecycle of IT — from hardware and connectivity to architecture, access control, and technical documentation.</p></div>
+<div aria-label="Interactive illustrative technology network map. Hover or focus a skill to light its connection." class="expertise-network-panel" role="group">
+<div class="expertise-network-top"><span class="micro-label">SKILL CONNECTIONS / LIVE MAP</span><span class="map-label">ILLUSTRATIVE • INTERACTIVE</span></div>
+<svg aria-label="Connected hub diagram with Networks, Security, Data, and Delivery. Hover a skill card to trace its connection." class="network-diagram network-diagram-v16" role="img" viewbox="0 0 760 390">
+<defs><lineargradient id="skillroute" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#55edca"></stop><stop offset="1" stop-color="#3b9aca"></stop></lineargradient><radialgradient id="skillcore"><stop stop-color="#1b817f" stop-opacity=".38"></stop><stop offset="1" stop-color="#0a2637" stop-opacity=".06"></stop></radialgradient></defs>
+<g class="map-grid" opacity=".12" stroke="#4bbdba" stroke-width=".7"><path d="M0 65H760M0 130H760M0 195H760M0 260H760M0 325H760M76 0V390M152 0V390M228 0V390M304 0V390M380 0V390M456 0V390M532 0V390M608 0V390M684 0V390"></path></g>
+<g class="map-link-group" fill="none" stroke="url(#skillroute)" stroke-width="2">
+<path class="map-link" d="M380 193 C295 175 295 94 182 94" data-skill="0"></path>
+<path class="map-link" d="M380 193 C467 165 475 94 577 94" data-skill="1"></path>
+<path class="map-link" d="M380 193 C293 220 285 292 182 294" data-skill="2"></path>
+<path class="map-link" d="M380 193 C468 230 466 292 577 294" data-skill="3"></path>
+</g>
+<g class="map-signal-dots" fill="#55edca"><circle class="signal-dot" data-skill="0" r="5"></circle><circle class="signal-dot" data-skill="1" r="5"></circle><circle class="signal-dot" data-skill="2" r="5"></circle><circle class="signal-dot" data-skill="3" r="5"></circle></g>
+<circle class="map-core-halo" cx="380" cy="193" fill="url(#skillcore)" r="84" stroke="#55edca" stroke-opacity=".28"></circle>
+<circle class="map-core-ring" cx="380" cy="193" fill="#0b293b" r="63" stroke="#56ddc8" stroke-opacity=".56" stroke-width="1"></circle>
+<rect fill="#103d49" height="64" rx="11" stroke="#55edca" stroke-width="1.6" width="72" x="344" y="161"></rect>
+<g class="map-core-lines" fill="none" stroke="#72eee1" stroke-width="1.8"><path d="M358 176h44v8h-44zM358 190h44v8h-44zM358 204h44v8h-44z"></path></g>
+<text class="core-caption" text-anchor="middle" x="380" y="249">IT INFRASTRUCTURE</text>
+<g aria-label="Highlight network infrastructure connection" class="map-point" data-skill="0" role="button" tabindex="0"><rect height="67" rx="11" width="206" x="76" y="60"></rect><circle cx="102" cy="93" r="9"></circle><text x="123" y="89">NETWORKS</text><text class="point-detail" x="123" y="105">CONNECTIVITY / SYSTEMS</text></g>
+<g aria-label="Highlight cybersecurity connection" class="map-point" data-skill="1" role="button" tabindex="0"><rect height="67" rx="11" width="206" x="480" y="60"></rect><circle cx="506" cy="93" r="9"></circle><text x="528" y="89">SECURITY</text><text class="point-detail" x="528" y="105">ACCESS / HARDENING</text></g>
+<g aria-label="Highlight data systems connection" class="map-point" data-skill="2" role="button" tabindex="0"><rect height="67" rx="11" width="206" x="76" y="260"></rect><circle cx="102" cy="293" r="9"></circle><text x="123" y="289">DATA</text><text class="point-detail" x="123" y="305">MODELS / INFORMATION</text></g>
+<g aria-label="Highlight problem-solving and delivery connection" class="map-point" data-skill="3" role="button" tabindex="0"><rect height="67" rx="11" width="206" x="480" y="260"></rect><circle cx="506" cy="293" r="9"></circle><text x="528" y="289">DELIVERY</text><text class="point-detail" x="528" y="305">TESTING / DOCUMENTATION</text></g>
+</svg>
+<div class="expertise-network-bottom"><span class="online-dot"></span><span>HOVER A SKILL TO TRACE A CONNECTION</span><strong aria-live="polite" id="network-status">ALL SYSTEMS CONNECTED</strong></div>
+</div>
+</div>
+<div class="expertise-grid">
+<article aria-label="Highlight Networks &amp; infrastructure on network diagram" class="expertise-card" data-skill="0" tabindex="0"><span class="expertise-no">01</span><div class="expertise-symbol">⌘</div><h3>Networks &amp; infrastructure</h3><p>IP addressing, subnetting, connectivity diagnostics, hardware deployment, uptime monitoring, and performance optimization.</p><div class="tag-list"><span>TCP/IP</span><span>Subnetting</span><span>Infrastructure</span></div></article>
+<article aria-label="Highlight Cybersecurity operations on network diagram" class="expertise-card" data-skill="1" tabindex="0"><span class="expertise-no">02</span><div class="expertise-symbol">◇</div><h3>Cybersecurity operations</h3><p>System hardening, identity and access management, least privilege, network segmentation, and audit-log analysis.</p><div class="tag-list"><span>CIS Controls</span><span>Linux</span><span>pfSense</span></div></article>
+<article aria-label="Highlight Data &amp; information systems on network diagram" class="expertise-card" data-skill="2" tabindex="0"><span class="expertise-no">03</span><div class="expertise-symbol">▦</div><h3>Data &amp; information systems</h3><p>Relational database concepts, Microsoft Access forms and reports, SQL querying, data models, and documentation.</p><div class="tag-list"><span>SQL</span><span>Microsoft Access</span><span>EER</span></div></article>
+<article aria-label="Highlight Problem-solving &amp; delivery on network diagram" class="expertise-card" data-skill="3" tabindex="0"><span class="expertise-no">04</span><div class="expertise-symbol">↗</div><h3>Problem-solving &amp; delivery</h3><p>Turning goals into technical requirements, testing work, documenting solutions, and understanding operational trade-offs. Project management and business operations provide context for planning, documentation, and technical decision-making.</p><div class="tag-list"><span>Project planning</span><span>Testing</span><span>Documentation</span></div></article>
+</div>
+</div></section>
 
 
     <section class="section shell projects-section" id="work" aria-labelledby="work-title">
-      <div class="section-kicker"><span>02 / SELECTED WORK</span><span class="section-rule"></span></div>
+      <div class="section-kicker"><span>01 / SELECTED WORK</span><span class="section-rule"></span></div>
       <div class="section-header"><div><h2 id="work-title">The work <em>speaks.</em></h2><p>Hands-on labs, technical case studies, and independent builds spanning networking, cybersecurity, databases, and infrastructure.</p></div><div class="section-count">08 <span>PROJECTS</span></div></div>
       <div class="filter-bar" role="group" aria-label="Filter projects">
         <div class="filter-chips" id="filter-chips"><button type="button" class="chip active" data-filter="all" aria-pressed="true">All work <span>08</span></button><button type="button" class="chip" data-filter="networking" aria-pressed="false">Networking</button><button type="button" class="chip" data-filter="security" aria-pressed="false">Security</button><button type="button" class="chip" data-filter="database" aria-pressed="false">Databases</button><button type="button" class="chip" data-filter="strategy" aria-pressed="false">Strategy</button></div>
@@ -97,107 +199,140 @@
       <p class="project-note">Projects are labeled as coursework, team work, concepts, or personal builds. Screenshots are from supplied project materials, except the monitoring dashboard's illustrative graphic.</p>
     </section>
 
-    <section class="section shell experience-section" id="experience" aria-labelledby="experience-title">
-      <div class="section-kicker"><span>03 / PROFESSIONAL EXPERIENCE</span><span class="section-rule"></span></div>
-      <div class="section-header"><div><h2 id="experience-title">Beyond the <em>classroom.</em></h2><p>Real technical responsibilities, production environments, and hands-on operational troubleshooting.</p></div></div>
-      <div class="timeline">
-        <article class="timeline-item nestor-experience">
-          <div class="job-time">DEC 2024 — PRESENT</div>
-          <div class="job-content">
-            <h3>IT Technician</h3>
-            <p class="job-company">Nestor Technologies <span>·</span> Buffalo, NY</p>
-            <p>Primary on-site technician supporting daily operations at a cryptocurrency mining facility with <strong>800+ ASIC devices</strong> across <strong>100+ client accounts</strong>. Troubleshoot IP addressing, subnetting, network connectivity, miner performance, and hardware faults. Monitor equipment health and help restore miners that do not return to service as expected after automated curtailment events.</p>
-            <div class="job-tags"><span>IP addressing &amp; connectivity</span><span>Hiveon Enterprise</span><span>Post-curtailment recovery</span><span>ASIC hardware</span></div>
-            <details class="operations-detail">
-              <summary><span class="operations-summary-main"><span class="summary-spark" aria-hidden="true">↗</span>Explore infrastructure operations</span><span class="operations-summary-hint">REAL-WORLD TECHNICAL EXPERIENCE <span aria-hidden="true">+</span></span></summary>
-              <div class="operations-body">
-                <div class="operations-heading"><div><span class="operations-eyebrow">PRODUCTION OPERATIONS / SCOPE OF WORK</span><h4>Keeping infrastructure connected and operational.</h4></div><p>Hands-on experience across physical networking, system monitoring, and troubleshooting in a production environment.</p></div>
-                <div class="operations-grid">
-                  <div class="operations-unit"><span class="operations-index">01 / NETWORK INFRASTRUCTURE</span><h5>Network infrastructure</h5><p>Ethernet cabling and termination, switch configurations, IP addressing, connectivity troubleshooting, and network-connected equipment deployment.</p></div>
-                  <div class="operations-unit"><span class="operations-index">02 / SYSTEMS MONITORING</span><h5>Systems monitoring</h5><p>Monitoring equipment health, system performance, alerts, connectivity, and operational availability in a production environment.</p></div>
-                  <div class="operations-unit"><span class="operations-index">03 / TECHNICAL TROUBLESHOOTING</span><h5>Technical troubleshooting</h5><p>Diagnosing hardware and connectivity faults, resolving equipment issues, and verifying systems return to normal operation.</p></div>
-                </div>
-                <div class="operations-context">
-                  <div class="ops-target"><span class="operations-eyebrow">SERVICE-LEVEL CONTEXT</span><strong>90<span>%</span></strong><small>Contractual uptime target.</small></div>
-                  <div class="ops-process"><span class="operations-eyebrow">ENERGY-AWARE OPERATIONS</span><div class="process-flow" aria-label="Day-ahead market signals inform automated curtailment, followed by equipment restart and technician verification"><span>Day-ahead market</span><b aria-hidden="true">→</b><span>Automated curtailment</span><b aria-hidden="true">→</b><span>Restart &amp; technician verification</span></div><p>The facility uses day-ahead electricity market information, curtailment, and demand-response programs to manage operating economics. I monitor the resulting equipment state and understand the business impact.</p></div>
-                </div>
-              </div>
-            </details>
-          </div><span class="timeline-arrow">↗</span>
-        </article>
-        <article class="timeline-item terratek-experience">
-          <div class="job-time">MAR 2023 — JAN 2024</div>
-          <div class="job-content">
-            <h3>Data Acquisition Technician / Project Manager</h3>
-            <p class="job-company">Terratek GPS Modeling <span>·</span> Tonawanda, NY</p>
-            <p>Supported survey and mapping projects that combined field stakeout, LiDAR and photogrammetry data capture, and office-based model preparation. My work included staking solar-field points in the field, collecting control and GPS observations for elevation correction, processing scan data, and turning site information into usable layouts, linework, and deliverables.</p>
-            <div class="job-tags"><span>Field stakeout</span><span>LiDAR &amp; photogrammetry</span><span>Control points &amp; elevations</span><span>Drafting &amp; deliverables</span></div>
-            <details class="operations-detail terratek-detail">
-              <summary><span class="operations-summary-main"><span class="summary-spark" aria-hidden="true">↗</span>Explore geospatial operations</span><span class="operations-summary-hint">FIELD + PROCESSING WORKFLOW <span aria-hidden="true">+</span></span></summary>
-              <div class="operations-body terratek-body tt-clean">
-                <div class="tt-overview">
-                  <span class="operations-eyebrow">FIELDWORK / GEOSPATIAL PROCESSING</span>
-                  <h4>From the field to the finished model.</h4>
-                  <p>At Terratek, I worked across field stakeout, GNSS ground control, LiDAR and photogrammetry data capture, and preparation of mapping and terrain deliverables.</p>
-                </div>
-                <div class="tt-steps" aria-label="Survey and mapping workflow">
-                  <div><span>01 / FIELD</span><strong>Stakeout &amp; control</strong></div>
-                  <div><span>02 / CAPTURE</span><strong>GNSS, LiDAR &amp; drone data</strong></div>
-                  <div><span>03 / PROCESS</span><strong>Models, surfaces &amp; drafting</strong></div>
-                </div>
-                <section class="tt-gallery" aria-label="Selected geospatial work examples">
-                  <div class="tt-gallery-head">
-                    <div>
-                      <span class="operations-eyebrow">SELECTED WORK / REAL PROJECT VISUALS</span>
-                      <h5>Technical work, documented.</h5>
-                    </div>
-                    <div class="tt-tabs" role="tablist" aria-label="Choose work example">
-                      <button type="button" role="tab" class="tt-tab is-active" aria-selected="true" id="tt-tab-solar" aria-controls="tt-stage" data-tt-index="0">Solar field</button>
-                      <button type="button" role="tab" class="tt-tab" aria-selected="false" id="tt-tab-resort" aria-controls="tt-stage" data-tt-index="1" tabindex="-1">Ski resort</button>
-                      <button type="button" role="tab" class="tt-tab" aria-selected="false" id="tt-tab-tin" aria-controls="tt-stage" data-tt-index="2" tabindex="-1">TIN surface</button>
-                    </div>
-                  </div>
-                  <figure class="tt-stage" role="tabpanel" id="tt-stage" aria-labelledby="tt-tab-solar" tabindex="0">
-                    <img id="tt-stage-image" src="assets/terratek_solar_hero.webp" alt="Survey-software view of a processed solar-field model with mapped rows" loading="lazy">
-                    <figcaption><span class="tt-caption-label" id="tt-stage-label">SOLAR-FIELD PROCESSING</span><span id="tt-stage-caption">Processed model showing solar-array rows, surveyed features, and site layout.</span><span class="tt-image-counter" id="tt-image-counter">01 / 03</span></figcaption>
-                  </figure>
-                </section>
-                <p class="tt-footnote">Images are examples of real project work. Original site coordinates and restricted project files are not provided on this website.</p>
-              </div>
-            </details>
-          </div><span class="timeline-arrow">↗</span>
-        </article>
-        <article class="timeline-item"><div class="job-time">DEC 2022 — MAR 2023</div><div class="job-content"><h3>Security and Systems Technician</h3><p class="job-company">Brown Security Solutions <span>·</span> Hamburg, NY</p><p>Installed and configured access-control equipment including card readers and biometric scanners. Performed software updates, system diagnostics, and hardware testing.</p><div class="job-tags"><span>Access control</span><span>Hardware</span><span>Diagnostics</span></div></div><span class="timeline-arrow">↗</span></article>
-        <article class="timeline-item"><div class="job-time">JAN 2020 — JAN 2023</div><div class="job-content"><h3>Installation Technician</h3><p class="job-company">ADT Security Systems <span>·</span> Cheektowaga, NY</p><p>Installed security and surveillance systems for residential and commercial customers, including CCTV, DVRs, NVRs, low-voltage wiring, and access-control components. Troubleshot video, signal, and network communication issues.</p><div class="job-tags"><span>CCTV / NVR / DVR</span><span>Low-voltage systems</span><span>Field service</span></div></div><span class="timeline-arrow">↗</span></article>
-      </div>
-    </section>
+    <section aria-labelledby="experience-title" class="section shell experience-section" id="experience">
+<div class="section-kicker"><span>03 / PROFESSIONAL EXPERIENCE</span><span class="section-rule"></span></div>
+<div class="section-header"><div><h2 id="experience-title">Beyond the <em>classroom.</em></h2><p>Real technical responsibilities, production environments, and hands-on operational troubleshooting.</p></div></div>
+<div aria-hidden="true" class="career-track-heading"><span>CAREER TIMELINE / 2020 — TODAY</span><span>FIELD WORK → INFRASTRUCTURE</span></div><div class="timeline">
+<article class="timeline-item nestor-experience" data-career-step="01">
+<div class="job-time">DEC 2024 — PRESENT</div>
+<div class="job-content" tabindex="0">
+<h3>IT Technician</h3>
+<p class="job-company">Nestor Technologies <span>·</span> Buffalo, NY</p>
+<p>Primary on-site technician supporting daily operations at a cryptocurrency mining facility with <strong>800+ ASIC devices</strong> across <strong>100+ client accounts</strong>. Troubleshoot IP addressing, subnetting, network connectivity, miner performance, and hardware faults. Monitor equipment health and help restore miners that do not return to service as expected after automated curtailment events.</p>
+<div class="job-tags"><span>IP addressing &amp; connectivity</span><span>Hiveon Enterprise</span><span>Post-curtailment recovery</span><span>ASIC hardware</span></div>
 
-    <section class="education-section" id="education" aria-labelledby="education-title"><div class="shell">
-      <div class="section-kicker"><span>04 / EDUCATION & CREDENTIALS</span><span class="section-rule"></span></div>
-      <div class="section-header"><div><h2 id="education-title">Always <em>learning.</em></h2><p>Academic foundations, technical training, and professional development.</p></div></div>
-      <div class="education-grid">
-        <div class="school-card school-card-pathway">
-          <div class="school-top"><span class="mini-circle">UB</span><span class="pill-status">UNDERGRAD · SPRING 2027</span></div>
-          <h3>University at Buffalo</h3>
-          <p><strong>Information Technology &amp; Management (ITM)</strong> <span>·</span> Undergraduate degree</p>
-          <div class="school-line">Minor in Cybersecurity</div>
-          <div class="pathway-note"><span class="tiny-heading">4+1 PROGRAM · GRADUATE PATHWAY</span><strong>Master's pathway: Management Information Systems (MIS)</strong><p>ITM undergraduate graduation expected Spring 2027. MIS graduate studies may begin Fall 2027.</p></div>
-          <div class="school-bottom">2024 — PRESENT <span aria-hidden="true">↗</span></div>
-        </div>
-        <div class="credentials-card credential-list-six"><span class="tiny-heading">CERTIFICATIONS &amp; TRAINING</span>
-          <div class="credential"><span class="credential-icon" aria-hidden="true">✦</span><div><strong>CompTIA Tech+</strong><span>Earned</span></div><span class="credential-check" aria-label="Earned">✓</span></div>
-          <div class="credential"><span class="credential-icon" aria-hidden="true">✦</span><div><strong>CompTIA A+</strong><span>Earned</span></div><span class="credential-check" aria-label="Earned">✓</span></div>
-          <div class="credential"><span class="credential-icon" aria-hidden="true">✦</span><div><strong>CompTIA Network+</strong><span>Not yet earned</span></div></div>
-          <div class="credential"><span class="credential-icon" aria-hidden="true">✦</span><div><strong>CompTIA Security+</strong><span>Not yet earned</span></div></div>
-          <div class="credential"><span class="credential-icon" aria-hidden="true">✦</span><div><strong>CompTIA Cloud+</strong><span>Not yet earned</span></div></div>
-          <div class="credential"><span class="credential-icon" aria-hidden="true">⌁</span><div><strong>Google IT Support Fundamentals</strong><span>Completed</span></div><span class="credential-check" aria-label="Completed">✓</span></div>
-        </div>
-        <div class="prior-education"><span class="tiny-heading">ADDITIONAL EDUCATION</span><div><h3>Buffalo Center for Arts and Technology</h3><p>IT Career Training Program <span>·</span> 2025–present</p></div><div><h3>Erie Community College</h3><p>Associate of Science, Liberal Arts <span>·</span> 2015–2017</p></div></div>
-      </div>
-    </div></section>
+</div><details class="operations-detail">
+<summary><span class="operations-summary-main"><span aria-hidden="true" class="summary-spark">↗</span>Explore infrastructure operations</span><span class="operations-summary-hint">REAL-WORLD TECHNICAL EXPERIENCE <span aria-hidden="true">+</span></span></summary>
+<div class="operations-body">
+<div class="operations-heading"><div><span class="operations-eyebrow">PRODUCTION OPERATIONS / SCOPE OF WORK</span><h4>Keeping infrastructure connected and operational.</h4></div><p>Hands-on experience across physical networking, system monitoring, and troubleshooting in a production environment.</p></div>
+<div class="operations-grid">
+<div class="operations-unit"><span class="operations-index">01 / NETWORK INFRASTRUCTURE</span><h5>Network infrastructure</h5><p>Ethernet cabling and termination, switch configurations, IP addressing, connectivity troubleshooting, and network-connected equipment deployment.</p></div>
+<div class="operations-unit"><span class="operations-index">02 / SYSTEMS MONITORING</span><h5>Systems monitoring</h5><p>Monitoring equipment health, system performance, alerts, connectivity, and operational availability in a production environment.</p></div>
+<div class="operations-unit"><span class="operations-index">03 / TECHNICAL TROUBLESHOOTING</span><h5>Technical troubleshooting</h5><p>Diagnosing hardware and connectivity faults, resolving equipment issues, and verifying systems return to normal operation.</p></div>
+</div>
+<div class="operations-context">
+<div class="ops-target"><span class="operations-eyebrow">SERVICE-LEVEL CONTEXT</span><strong>90<span>%</span></strong><small>Contractual uptime target.</small></div>
+<div class="ops-process"><span class="operations-eyebrow">ENERGY-AWARE OPERATIONS</span><div aria-label="Day-ahead market signals inform automated curtailment, followed by equipment restart and technician verification" class="process-flow"><span>Day-ahead market</span><b aria-hidden="true">→</b><span>Automated curtailment</span><b aria-hidden="true">→</b><span>Restart &amp; technician verification</span></div><p>The facility uses day-ahead electricity market information, curtailment, and demand-response programs to manage operating economics. I monitor the resulting equipment state and understand the business impact.</p></div>
+</div>
+</div>
+</details><span class="timeline-arrow">↗</span>
+</article>
+<article class="timeline-item terratek-experience" data-career-step="02">
+<div class="job-time">MAR 2023 — JAN 2024</div>
+<div class="job-content" tabindex="0">
+<h3>Data Acquisition Technician / Project Manager</h3>
+<p class="job-company">Terratek GPS Modeling <span>·</span> Tonawanda, NY</p>
+<p>Supported survey and mapping projects that combined field stakeout, LiDAR and photogrammetry data capture, and office-based model preparation. My work included staking solar-field points in the field, collecting control and GPS observations for elevation correction, processing scan data, and turning site information into usable layouts, linework, and deliverables.</p>
+<div class="job-tags"><span>Field stakeout</span><span>LiDAR &amp; photogrammetry</span><span>Control points &amp; elevations</span><span>Drafting &amp; deliverables</span></div>
 
-    <section class="cta-section shell" id="contact" aria-labelledby="contact-title"><div class="cta-bg" aria-hidden="true">CONNECT</div><div class="cta-inner"><div><div class="eyebrow"><span class="online-dot"></span> LET'S BUILD SOMETHING RELIABLE</div><h2 id="contact-title">Let's turn a complex<br>problem into a <em>solution.</em></h2><p>Interested in my experience, technical skills, or projects? I’d be glad to connect and discuss how I can contribute to your team.</p><div class="cta-buttons"><a class="btn btn-primary" href="mailto:nyruj84@hmail.com?subject=Hello%20Nyru%20%E2%80%94%20Portfolio%20Inquiry">Send an email <span aria-hidden="true">↗</span></a><button class="btn btn-outline" type="button" id="copy-email">Copy email <span aria-hidden="true">⧉</span></button></div><div class="email-fallback">nyruj84@hmail.com <span>·</span> Buffalo, NY</div></div><div class="cta-monogram" aria-hidden="true">NJ<span>.</span></div></div></section>
-  </main>
+</div><details class="operations-detail terratek-detail">
+<summary><span class="operations-summary-main"><span aria-hidden="true" class="summary-spark">↗</span>Explore geospatial operations</span><span class="operations-summary-hint">FIELD + PROCESSING WORKFLOW <span aria-hidden="true">+</span></span></summary>
+<div class="operations-body terratek-body tt-clean">
+<div class="tt-overview">
+<span class="operations-eyebrow">FIELDWORK / GEOSPATIAL PROCESSING</span>
+<h4>From the field to the finished model.</h4>
+<p>At Terratek, I worked across field stakeout, GNSS ground control, LiDAR and photogrammetry data capture, and preparation of mapping and terrain deliverables.</p>
+</div>
+<div aria-label="Survey and mapping workflow" class="tt-steps">
+<div><span>01 / FIELD</span><strong>Stakeout &amp; control</strong></div>
+<div><span>02 / CAPTURE</span><strong>GNSS, LiDAR &amp; drone data</strong></div>
+<div><span>03 / PROCESS</span><strong>Models, surfaces &amp; drafting</strong></div>
+</div>
+<section aria-label="Selected geospatial work examples" class="tt-gallery">
+<div class="tt-gallery-head">
+<div>
+<span class="operations-eyebrow">SELECTED WORK / REAL PROJECT VISUALS</span>
+<h5>Technical work, documented.</h5>
+</div>
+<div aria-label="Choose work example" class="tt-tabs" role="tablist">
+<button aria-controls="tt-stage" aria-selected="true" class="tt-tab is-active" data-tt-index="0" id="tt-tab-solar" role="tab" type="button">Solar field</button>
+<button aria-controls="tt-stage" aria-selected="false" class="tt-tab" data-tt-index="1" id="tt-tab-resort" role="tab" tabindex="-1" type="button">Ski resort</button>
+<button aria-controls="tt-stage" aria-selected="false" class="tt-tab" data-tt-index="2" id="tt-tab-tin" role="tab" tabindex="-1" type="button">TIN surface</button>
+</div>
+</div>
+<figure aria-labelledby="tt-tab-solar" class="tt-stage" id="tt-stage" role="tabpanel" tabindex="0">
+<img alt="Survey-software view of a processed solar-field model with mapped rows" id="tt-stage-image" loading="lazy" src="assets/terratek_solar_hero.webp"/>
+<figcaption><span class="tt-caption-label" id="tt-stage-label">SOLAR-FIELD PROCESSING</span><span id="tt-stage-caption">Processed model showing solar-array rows, surveyed features, and site layout.</span><span class="tt-image-counter" id="tt-image-counter">01 / 03</span></figcaption>
+</figure>
+</section>
+<p class="tt-footnote">Images are examples of real project work. Original site coordinates and restricted project files are not provided on this website.</p>
+</div>
+</details><span class="timeline-arrow">↗</span>
+</article>
+<article class="timeline-item" data-career-step="03"><div class="job-time">DEC 2022 — MAR 2023</div><div class="job-content" tabindex="0"><h3>Security and Systems Technician</h3><p class="job-company">Brown Security Solutions <span>·</span> Hamburg, NY</p><p>Installed and configured access-control equipment including card readers and biometric scanners. Performed software updates, system diagnostics, and hardware testing.</p><div class="job-tags"><span>Access control</span><span>Hardware</span><span>Diagnostics</span></div></div><span class="timeline-arrow">↗</span></article>
+<article class="timeline-item" data-career-step="04"><div class="job-time">JAN 2020 — JAN 2023</div><div class="job-content" tabindex="0"><h3>Installation Technician</h3><p class="job-company">ADT Security Systems <span>·</span> Cheektowaga, NY</p><p>Installed security and surveillance systems for residential and commercial customers, including CCTV, DVRs, NVRs, low-voltage wiring, and access-control components. Troubleshot video, signal, and network communication issues.</p><div class="job-tags"><span>CCTV / NVR / DVR</span><span>Low-voltage systems</span><span>Field service</span></div></div><span class="timeline-arrow">↗</span></article>
+</div>
+</section>
+
+
+    <section aria-labelledby="education-title" class="education-section" id="education"><div class="shell">
+<div class="section-kicker"><span>04 / EDUCATION &amp; CREDENTIALS</span><span class="section-rule"></span></div>
+<div class="section-header"><div><h2 id="education-title">Always <em>learning.</em></h2><p>Academic foundations, technical training, and professional development.</p></div></div>
+<div aria-label="University academic pathway: in-progress ITM undergraduate degree and Cybersecurity minor, then prospective graduate MIS studies" class="learning-journey">
+<div class="learning-journey-heading"><span class="tiny-heading">04 / ACADEMIC PATHWAY</span><strong>From foundations to what comes next.</strong><small>Hover a stage to follow the path</small></div>
+<div class="learning-journey-stages">
+<div class="learning-step is-current" data-stage="0" tabindex="0"><span class="learning-index">01 / PRESENT</span><span class="learning-icon">▣</span><strong><span>Information Technology and Management</span> <span class="degree-term">Undergraduate</span></strong><p>University at Buffalo</p><small>Graduation expected Spring 2027</small></div>
+<div aria-hidden="true" class="learning-segment"><i></i><span>IN PROGRESS</span></div>
+<div class="learning-step is-current" data-stage="1" tabindex="0"><span class="learning-index">02 / CONCURRENT</span><span class="learning-icon">⌁</span><strong><span>Cybersecurity</span> <span class="degree-term">Minor</span></strong><p>Part of undergraduate studies</p><small>Studies in progress</small></div>
+<div aria-hidden="true" class="learning-segment"><i></i><span>4+1 PATHWAY</span></div>
+<div class="learning-step is-future" data-stage="2" tabindex="0"><span class="learning-index">03 / GRADUATE PATHWAY</span><span class="learning-icon">↗</span><strong><span>Management Information Systems</span> <span class="degree-term">Graduate Studies</span></strong><p>4+1 academic pathway</p><small>Not yet completed or earned</small></div>
+</div>
+<div class="learning-journey-footer"><span class="learning-key"><b></b> Undergrad / current studies</span><span class="learning-key"><b></b> Graduate pathway / future</span></div>
+</div><div class="education-grid">
+<div class="school-card school-card-pathway">
+<div class="school-top"><span class="mini-circle">UB</span><span class="pill-status">UNDERGRAD · SPRING 2027</span></div>
+<h3>University at Buffalo</h3>
+<p><strong>Information Technology and Management (ITM)</strong> <span>·</span> <strong class="degree-term">Undergraduate Degree</strong></p>
+<div class="school-line"><strong class="degree-term">Minor</strong> in <strong class="degree-term">Cybersecurity</strong></div>
+
+<div class="pathway-note"><span class="tiny-heading">4+1 PROGRAM · GRADUATE PATHWAY</span><strong>Master's pathway: <span class="degree-term">Management Information Systems (MIS)</span></strong><p>Information Technology and Management undergraduate graduation expected Spring 2027. Management Information Systems graduate studies may begin Fall 2027.</p></div>
+<div class="school-bottom">2024 — PRESENT <span aria-hidden="true">↗</span></div>
+</div>
+<div class="credentials-card credential-list-six"><span class="tiny-heading">CERTIFICATIONS &amp; TRAINING</span>
+<div class="credential"><span aria-hidden="true" class="credential-icon">✦</span><div><strong>CompTIA Tech+</strong><span>Earned</span></div><span aria-label="Earned" class="credential-check">✓</span></div>
+<div class="credential"><span aria-hidden="true" class="credential-icon">✦</span><div><strong>CompTIA A+</strong><span>Earned</span></div><span aria-label="Earned" class="credential-check">✓</span></div>
+<div class="credential"><span aria-hidden="true" class="credential-icon">✦</span><div><strong>CompTIA Network+</strong><span>Not yet earned</span></div></div>
+<div class="credential"><span aria-hidden="true" class="credential-icon">✦</span><div><strong>CompTIA Security+</strong><span>Not yet earned</span></div></div>
+<div class="credential"><span aria-hidden="true" class="credential-icon">✦</span><div><strong>CompTIA Cloud+</strong><span>Not yet earned</span></div></div>
+<div class="credential"><span aria-hidden="true" class="credential-icon">⌁</span><div><strong>Google IT Support Fundamentals</strong><span>Completed</span></div><span aria-label="Completed" class="credential-check">✓</span></div>
+</div>
+<div class="prior-education"><span class="tiny-heading">ADDITIONAL EDUCATION</span><div><h3>Buffalo Center for Arts and Technology</h3><p>IT Career Training Program <span>·</span> 2025–present</p></div><div><h3>Erie Community College</h3><p>Associate of Science, Liberal Arts <span>·</span> 2015–2017</p></div></div>
+</div>
+</div></section>
+
+
+    <section aria-labelledby="contact-title" class="cta-section shell" id="contact">
+<div aria-hidden="true" class="contact-edge-waves wave-left"><svg preserveaspectratio="none" viewbox="0 0 230 600"><g fill="none" stroke="currentColor" stroke-width="1.2"><path d="M-40 0C170 90 50 220 240 310S110 480 250 600"></path><path d="M-70 0C140 90 20 220 210 310S80 480 220 600"></path><path d="M-100 0C110 90 -10 220 180 310S50 480 190 600"></path><path d="M-130 0C80 90 -40 220 150 310S20 480 160 600"></path><path d="M-160 0C50 90 -70 220 120 310S-10 480 130 600"></path></g></svg></div>
+<div aria-hidden="true" class="contact-edge-waves wave-right"><svg preserveaspectratio="none" viewbox="0 0 230 600"><g fill="none" stroke="currentColor" stroke-width="1.2"><path d="M-40 0C170 90 50 220 240 310S110 480 250 600"></path><path d="M-70 0C140 90 20 220 210 310S80 480 220 600"></path><path d="M-100 0C110 90 -10 220 180 310S50 480 190 600"></path><path d="M-130 0C80 90 -40 220 150 310S20 480 160 600"></path><path d="M-160 0C50 90 -70 220 120 310S-10 480 130 600"></path></g></svg></div>
+<div class="contact-surface">
+<div aria-hidden="true" class="contact-constellation"><svg preserveaspectratio="xMidYMid meet" viewbox="0 0 900 300"><g fill="none" opacity=".23" stroke="currentColor" stroke-width=".85"><path d="M-10 100 130 45 230 130 390 75 520 170 680 70 900 120"></path><path d="M-10 190 180 240 340 160 510 275 730 185 900 240"></path><path d="M130 45 180 240M230 130 340 160M390 75 520 170M680 70 730 185M520 170 730 185"></path></g><g fill="currentColor" opacity=".5"><circle cx="130" cy="45" r="2"></circle><circle cx="230" cy="130" r="2"></circle><circle cx="390" cy="75" r="2"></circle><circle cx="520" cy="170" r="2"></circle><circle cx="680" cy="70" r="2"></circle><circle cx="730" cy="185" r="2"></circle></g></svg></div>
+<div class="contact-topline"><span>05 / CONNECT</span><span class="contact-topline-rule"></span><span>OPEN TO A CONVERSATION</span></div>
+<div class="contact-center">
+<div class="eyebrow"><span class="online-dot"></span> LET'S BUILD SOMETHING RELIABLE</div>
+<h2 id="contact-title">Let's turn a complex<br/>problem into a <em>solution.</em></h2>
+<p>Interested in my background, technical work, or projects? I'd be glad to connect and discuss how I could contribute to your team.</p>
+<div class="cta-buttons"><a class="btn btn-primary" href="mailto:nyruj84@gmail.com?subject=Hello%20Nyru%20%E2%80%94%20Portfolio%20Inquiry">Send an email <span aria-hidden="true">↗</span></a><button class="btn btn-outline" id="copy-email" type="button">Copy email <span aria-hidden="true">⧉</span></button></div>
+</div>
+<div class="contact-bottom">
+<div class="contact-mini-brand"><strong>NJ<span>.</span></strong><small>NYRU JACKSON<br/>NETWORKING / SYSTEMS / SECURITY</small></div>
+<div class="contact-bottom-block"><span>LOCATION / CONTACT</span><a href="mailto:nyruj84@gmail.com">nyruj84@gmail.com</a><small>Buffalo, New York</small></div>
+<div class="contact-bottom-block"><span>FIND ME ONLINE</span><a href="https://www.linkedin.com/in/NyruJ" rel="noopener noreferrer" target="_blank">LinkedIn ↗</a><a href="https://nyrujj.github.io/My-Portfolio/" rel="noopener noreferrer" target="_blank">My Portfolio ↗</a></div>
+</div>
+</div>
+</section>
+
+
+    </main>
   <footer class="footer shell"><a href="#top" class="footer-brand">NJ<span>.</span></a><p>© <span id="year">2026</span> Nyru J. Jackson <span>·</span> Built to show the work behind the work.</p><a href="#top" class="back-to-top">Back to top ↑</a></footer>
 
   <div class="modal-layer" id="project-modal" hidden><div class="modal-backdrop" data-close="true"></div><section class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modal-title" tabindex="-1"><div class="modal-top"><span class="modal-overline" id="modal-overline">PROJECT DETAIL</span><button type="button" class="modal-close" id="modal-close" aria-label="Close project details">✕</button></div><div id="modal-content"></div></section></div>

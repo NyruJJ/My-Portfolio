@@ -1,0 +1,29 @@
+/* Portfolio 2.0 — minimalist pull-down tab navigation. */
+.pulltab-header{position:fixed;z-index:120;inset:0 0 auto;height:0;pointer-events:none}
+.pulltab-header>a,.pulltab-header>button,.pulltab-dock{pointer-events:auto}
+.pulltab-signature{position:fixed;top:22px;left:clamp(20px,3vw,54px);color:var(--text);font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:800;letter-spacing:.14em;text-decoration:none;text-shadow:0 1px 8px #001627}
+.pulltab-signature span{font-weight:500}.pulltab-signature i{color:var(--aqua);font-size:19px;font-style:normal;line-height:0}
+.pulltab-theme{position:fixed;top:16px;right:clamp(20px,3vw,54px);display:flex;align-items:center;gap:8px;border:1px solid rgba(95,176,181,.27);border-radius:999px;background:rgba(5,19,33,.65);backdrop-filter:blur(10px);padding:9px 12px;color:var(--text);font:700 11px 'DM Sans',sans-serif;cursor:pointer}
+.pulltab-theme svg{width:16px;height:16px}
+.pulltab-dock{position:fixed;top:0;left:50%;transform:translateX(-50%);width:244px;max-width:calc(100vw - 190px);filter:drop-shadow(0 12px 24px rgba(0,0,0,.22));}
+.pulltab-trigger{position:relative;display:flex;align-items:center;justify-content:center;gap:17px;width:148px;height:30px;margin:0 auto;border:1px solid rgba(66,208,190,.43);border-top:0;border-radius:0 0 13px 13px;background:rgba(6,28,43,.88);backdrop-filter:blur(18px);color:var(--aqua);letter-spacing:.19em;font:800 9px 'DM Sans',sans-serif;cursor:pointer;transition:height .25s,background .25s,border-color .25s}
+.pulltab-chevron{font-size:17px;line-height:1;transition:transform .2s}.pulltab-dock:hover .pulltab-trigger,.pulltab-dock:focus-within .pulltab-trigger{height:37px;background:rgba(10,44,60,.95)}
+.pulltab-menu{display:flex;flex-direction:column;gap:1px;visibility:hidden;opacity:0;transform:translateY(-9px) scale(.985);pointer-events:none;margin-top:5px;padding:12px 10px;border:1px solid rgba(69,207,195,.28);border-radius:12px;background:rgba(5,22,37,.96);backdrop-filter:blur(18px);box-shadow:0 20px 50px rgba(0,0,0,.3);transition:opacity .2s,transform .2s,visibility .2s}
+.pulltab-dock:hover .pulltab-menu,.pulltab-dock:focus-within .pulltab-menu,.pulltab-menu.open{visibility:visible;opacity:1;transform:translateY(0) scale(1);pointer-events:auto}
+.pulltab-dock:hover .pulltab-chevron,.pulltab-dock:focus-within .pulltab-chevron{transform:rotate(180deg)}
+.pulltab-menu a{display:flex;align-items:center;gap:16px;padding:11px 14px;border-radius:7px;color:#d5e6eb;font-size:13px;font-weight:650;text-decoration:none;transition:background .18s,color .18s,transform .18s}
+.pulltab-menu a small{color:var(--aqua);font:750 9px 'DM Sans',sans-serif;letter-spacing:.04em}
+.pulltab-menu a:hover,.pulltab-menu a:focus-visible{color:#fff;background:rgba(57,206,188,.15);transform:translateX(3px)}
+/* Retain approved glass opacity; reset previous box treatment. */
+.opening-screen>.metrics-wrap{background:rgba(12,35,55,.54)!important;backdrop-filter:blur(12px)!important;-webkit-backdrop-filter:blur(12px)!important}
+.opening-screen .metric:not(:last-child)::after{content:"";position:absolute;right:-10px;top:20%;height:62%;width:1px;background:rgba(165,220,230,.19);display:block!important}
+.opening-screen .metric{position:relative}
+@media(min-width:961px){
+  .opening-screen{height:calc(100svh - 18px)!important;min-height:0!important;padding:0!important;display:flex!important;flex-direction:column!important}
+  .opening-screen>.hero{flex:1 1 0!important;min-height:0!important;padding-block:clamp(12px,2vh,22px)!important}
+  .opening-screen>.metrics-wrap{flex:0 0 auto!important;margin:0!important}
+  .opening-screen .metrics{padding-block:15px 12px!important}
+}
+@media(max-width:960px){.pulltab-signature{top:17px;left:18px}.pulltab-theme{top:12px;right:15px}.pulltab-dock{width:190px}.pulltab-menu{padding:8px}.pulltab-trigger{width:105px}.opening-screen .metric:not(:last-child)::after{display:none!important}}
+@media(max-width:540px){.pulltab-signature{font-size:10px;top:15px}.pulltab-signature span{display:none}.pulltab-theme{top:9px;padding:7px 9px}.pulltab-dock{width:155px;max-width:45vw}.pulltab-trigger{width:94px;font-size:8px}}
+@media(prefers-reduced-motion:reduce){.pulltab-trigger,.pulltab-chevron,.pulltab-menu,.pulltab-menu a{transition:none!important}}

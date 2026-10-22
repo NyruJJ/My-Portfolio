@@ -1,0 +1,213 @@
+/* Signal Deck v18 — refinements based on review feedback.
+   Loaded after v17 so it can selectively override. */
+
+/* =========================
+   02 / EXPERTISE
+   - keep the ambient topology subtle
+   - make the background feel alive via moving traveler dots
+   - hover proximity should brighten nearby links / points
+   ========================= */
+#expertise .ambient-proximity-graph{opacity:.62}
+#expertise .ambient-proximity-graph .ambient-edge{
+  stroke:rgba(90,210,205,.11);
+  stroke-width:.52;
+}
+#expertise .ambient-proximity-graph .ambient-edge.is-near{
+  stroke:rgba(108,245,220,.88);
+  stroke-width:.95;
+  filter:drop-shadow(0 0 2px rgba(85,237,202,.7));
+}
+#expertise .ambient-proximity-graph .ambient-node{
+  fill:#5fd4d1;
+  opacity:.20;
+}
+#expertise .ambient-proximity-graph .ambient-node.is-near{
+  fill:#88fff0;
+  opacity:.95;
+  filter:drop-shadow(0 0 6px rgba(88,255,233,.95));
+}
+#expertise .ambient-proximity-graph .ambient-traveler{
+  fill:#7cffee;
+  opacity:.82;
+  filter:drop-shadow(0 0 6px rgba(124,255,238,.95));
+}
+#expertise .ambient-proximity-graph .ambient-traveler.is-strong{
+  fill:#b8fff6;
+  opacity:1;
+  filter:drop-shadow(0 0 10px rgba(165,255,245,1));
+}
+
+/* =========================
+   03 / EXPERIENCE
+   - return to centered timeline spine
+   - keep line from visually passing through nodes
+   - preserve a clean recruiter-friendly scan
+   ========================= */
+@media(min-width:701px){
+  #experience .timeline{
+    padding:16px 0 15px!important;
+    --career-start:60px;
+    --career-length:600px;
+    --career-fill:0px;
+  }
+  #experience .timeline::before,
+  #experience .timeline::after{
+    left:calc(50% - 1px)!important;
+    width:2px!important;
+  }
+  #experience .timeline-item{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr) 82px minmax(0,1fr)!important;
+    grid-template-rows:auto auto!important;
+    gap:0 16px!important;
+    padding:24px 0 40px!important;
+    background:transparent!important;
+    border:0!important;
+    position:relative;
+  }
+  /* mask disk sits over the spine so the line stops at the marker edge */
+  #experience .timeline-item::after{
+    content:"";
+    position:absolute;
+    top:53px;
+    left:calc(50% - 27px);
+    width:54px;
+    height:54px;
+    border-radius:50%;
+    background:radial-gradient(circle at center, rgba(8,18,31,.98) 0 58%, rgba(8,18,31,.88) 59%, rgba(8,18,31,0) 78%);
+    z-index:2;
+    pointer-events:none;
+  }
+  #experience .timeline-item::before{
+    top:61px!important;
+    left:calc(50% - 19px)!important;
+    width:38px!important;
+    height:38px!important;
+    z-index:3!important;
+    background:#0b2737!important;
+    box-shadow:0 0 0 9px rgba(8,18,31,.92), inset 0 0 0 1px rgba(127,246,222,.14)!important;
+  }
+  #experience .timeline-item.is-career-active::before,
+  #experience .timeline-item:has(details[open])::before,
+  #experience .timeline-item:hover::before{
+    background:#186c74!important;
+    color:#fff!important;
+    border-color:#82ffe6!important;
+    box-shadow:0 0 0 9px rgba(8,18,31,.96), 0 0 20px rgba(82,245,218,.34), inset 0 0 0 1px rgba(214,255,249,.16)!important;
+  }
+  #experience .timeline-item > .job-content{
+    grid-row:1!important;
+    min-width:0;
+    width:100%!important;
+    margin:0!important;
+  }
+  #experience .timeline-item:nth-child(odd) > .job-content{grid-column:3!important}
+  #experience .timeline-item:nth-child(even) > .job-content{grid-column:1!important}
+  #experience .timeline-item > .job-time{
+    grid-row:1!important;
+    align-self:start!important;
+    color:#5fead2!important;
+    font-size:13px!important;
+    letter-spacing:.12em!important;
+    line-height:1.5!important;
+    max-width:100%;
+  }
+  #experience .timeline-item:nth-child(odd) > .job-time{
+    grid-column:1!important;
+    justify-self:end!important;
+    text-align:right!important;
+    padding:68px 25px 0 12px!important;
+  }
+  #experience .timeline-item:nth-child(even) > .job-time{
+    grid-column:3!important;
+    justify-self:start!important;
+    text-align:left!important;
+    padding:68px 12px 0 25px!important;
+  }
+  #experience .timeline-item > details.operations-detail{
+    grid-column:1 / -1!important;
+    grid-row:2!important;
+    width:min(100% - 100px, 1010px)!important;
+    margin:14px auto 0!important;
+    position:relative!important;
+    z-index:5!important;
+    background:linear-gradient(140deg, rgba(10,31,46,.985), rgba(8,23,38,.985))!important;
+    border-color:rgba(85,237,202,.28)!important;
+  }
+  #experience .timeline-item > details.operations-detail[open]{
+    box-shadow:0 18px 46px rgba(0,0,0,.25), 0 0 0 1px rgba(85,237,202,.12)!important;
+  }
+  #experience .operations-body,
+  #experience .operations-grid,
+  #experience .operations-context{
+    position:relative;
+    z-index:1;
+  }
+}
+@media(max-width:700px){
+  #experience .timeline-item::after{display:none!important}
+}
+
+/* =========================
+   04 / EDUCATION
+   - retain bold hero lettering
+   - polish the pathway naming
+   ========================= */
+#education .learning-step strong .degree-term,
+#education .school-card strong.degree-term{
+  color:#f4fbfb;
+  font-weight:800;
+}
+
+/* =========================
+   05 / CONTACT
+   - make the edge waves visibly animate
+   - support a hex / node-network feel inside the panel
+   ========================= */
+#contact .contact-edge-waves{
+  color:rgba(84,235,214,.6);
+}
+#contact .contact-edge-waves svg{
+  overflow:visible;
+}
+#contact .contact-edge-waves path{
+  stroke-dasharray:12 10;
+  animation:v18-wave-stroke 15s linear infinite;
+}
+#contact .wave-right path:nth-child(2n){animation-duration:18s}
+#contact .wave-left path:nth-child(2n){animation-duration:13s}
+@keyframes v18-wave-stroke{to{stroke-dashoffset:-220}}
+
+#contact .contact-constellation{
+  opacity:.2;
+}
+#contact .contact-surface:hover .contact-constellation{opacity:.38}
+#contact .contact-constellation .contact-graph-line{
+  stroke:#49dcc6;
+  stroke-width:.82;
+  opacity:.24;
+}
+#contact .contact-constellation .contact-graph-line.is-near{
+  opacity:.96;
+  stroke-width:1.55;
+  filter:drop-shadow(0 0 5px rgba(94,240,220,.84));
+}
+#contact .contact-constellation .contact-graph-node{
+  fill:#6df0da;
+  opacity:.42;
+}
+#contact .contact-constellation .contact-graph-node.is-near{
+  opacity:1;
+  filter:drop-shadow(0 0 8px rgba(102,255,229,.95));
+}
+#contact .contact-constellation .contact-traveler{
+  fill:#98fff0;
+  opacity:.86;
+  filter:drop-shadow(0 0 7px rgba(120,255,240,.95));
+}
+
+@media(prefers-reduced-motion:reduce){
+  #expertise .ambient-proximity-graph .ambient-traveler,
+  #contact .contact-edge-waves path,
+  #contact .contact-constellation .contact-traveler{animation:none!important}
+}

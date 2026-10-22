@@ -1,0 +1,115 @@
+/* Signal Deck v14: readability + active navigation + restrained chapter life. */
+
+/* Keep the existing layout and colors. Improve only the tiny navigation copy. */
+.rune-selector .rune-selector-top {
+  color:#f2fafc !important;
+  font-size:12px !important;
+  letter-spacing:.18em !important;
+  font-weight:800 !important;
+}
+.rune-selector:not(.rune-compact) .rune-name{
+  font-size:11px !important;
+  letter-spacing:.025em !important;
+  font-weight:800 !important;
+}
+.rune-selector:not(.rune-compact) .rune-detail strong{font-size:16px!important}
+.rune-selector:not(.rune-compact) .rune-detail span{font-size:10.5px!important}
+.rune-selector.rune-compact .rune-selector-top{font-size:9.5px!important;letter-spacing:.10em!important}
+.rune-selector.rune-compact .rune-name{font-size:11px!important;font-weight:800!important}
+.rune-selector .rune-tile.is-current{
+  border-color:rgba(82,237,216,.91);
+  background:linear-gradient(155deg,rgba(15,90,111,.71),rgba(6,39,58,.88));
+  box-shadow:inset 0 0 18px rgba(31,178,183,.23),0 0 15px rgba(43,226,207,.18);
+}
+.rune-selector .rune-tile.is-current .rune-name{color:#f7ffff}
+.rune-selector .rune-tile.is-current .rune-glyph{
+  color:#69f2de;
+  text-shadow:0 0 12px rgba(91,255,222,.55);
+}
+.rune-selector .rune-tile.is-current:focus-visible{outline:2px solid var(--aqua);outline-offset:2px}
+
+/* The chapter *change* still takes 820ms; only the readable destination title
+   remains onscreen a little longer, with a slow, gentle fade. */
+.chapter-deck-fx.is-playing .deck-label {
+  animation:deck-label-hold-v14 1730ms ease-out both !important;
+}
+@keyframes deck-label-hold-v14{
+  0%{opacity:0;transform:translate(-50%,-43%) scale(.97)}
+  17%{opacity:0;transform:translate(-50%,-48%) scale(.985)}
+  28%{opacity:.98;transform:translate(-50%,-50%) scale(1)}
+  79%{opacity:.98;transform:translate(-50%,-50%) scale(1)}
+  100%{opacity:0;transform:translate(-50%,-57%) scale(1.015)}
+}
+
+/* A very quiet vertical reading-progress line on the inside chapters only. */
+.chapter-reading-track{
+  position:fixed;
+  z-index:23;
+  top:27vh;
+  left:clamp(8px,1.2vw,20px);
+  width:2px;
+  height:46vh;
+  border-radius:3px;
+  background:rgba(79,187,187,.12);
+  pointer-events:none;
+  opacity:.72;
+  transition:opacity .3s ease;
+}
+.chapter-reading-track::before{
+  content:"";
+  display:block;
+  width:100%;
+  height:calc(var(--chapter-read,0) * 100%);
+  border-radius:3px;
+  background:linear-gradient(180deg,#59e4d0,#23838d);
+  box-shadow:0 0 9px rgba(71,228,204,.24);
+}
+body.chapter-home .chapter-reading-track,
+body.chapter-changing .chapter-reading-track{opacity:0}
+
+/* Additional, small-scale movement when content comes into view INSIDE a
+   chapter. Avoid moving the entire reading column or replaying on every scroll. */
+.chapter-life-reveal{
+  opacity:.78;
+  translate:0 10px;
+  transition:opacity .67s cubic-bezier(.2,.8,.2,1),translate .67s cubic-bezier(.2,.8,.2,1);
+  transition-delay:var(--life-delay,0ms);
+}
+.chapter-life-reveal.life-visible{opacity:1;translate:0 0}
+
+/* Project category dividers softly draw their cyan rule when reached. */
+#work .project-group-divider .project-group-line{
+  transform-origin:left;
+  transform:scaleX(.12);
+  opacity:.35;
+  transition:transform .75s cubic-bezier(.16,.74,.15,1),opacity .65s ease;
+}
+#work .project-group-divider.life-visible .project-group-line{
+  transform:scaleX(1);
+  opacity:1;
+}
+/* Gentle active-row response; no perpetual motion or floating text. */
+#experience .timeline-item{
+  transition:background-color .35s ease;
+}
+#experience .timeline-item:hover{
+  background:linear-gradient(90deg,rgba(66,206,189,.035),transparent 74%);
+}
+#education .credential-icon{transition:border-color .26s ease,box-shadow .26s ease}
+#education .credential:hover .credential-icon{
+  border-color:rgba(88,230,207,.42);
+  box-shadow:0 0 14px rgba(66,209,191,.10);
+}
+
+/* Never interfere with keyboard navigation or accessibly reduced-motion. */
+@media(max-width:900px){
+  .chapter-reading-track{display:none}
+  .rune-selector:not(.rune-compact) .rune-name{font-size:10px!important}
+}
+@media(prefers-reduced-motion:reduce){
+  .chapter-deck-fx.is-playing .deck-label{animation:none!important}
+  .chapter-reading-track{display:none!important}
+  .chapter-life-reveal{opacity:1!important;translate:none!important;transition:none!important}
+  #work .project-group-divider .project-group-line{transform:none!important;opacity:1!important;transition:none!important}
+  #experience .timeline-item,#education .credential-icon{transition:none!important}
+}

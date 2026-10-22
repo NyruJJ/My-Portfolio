@@ -1,0 +1,210 @@
+/* v16: actual visual redesign of the four inner chapters.
+   Homepage, Projects chapter and Signal Deck transitions deliberately untouched. */
+
+/* Expertise - topology is a readable second focal point, not the old miniature chart. */
+#expertise.feature-section{position:relative;isolation:isolate;overflow:hidden;background:
+ radial-gradient(ellipse at 72% 22%,rgba(23,146,160,.16),transparent 46%),
+ radial-gradient(ellipse at 13% 70%,rgba(17,91,138,.12),transparent 60%),var(--panel);}
+#expertise .expertise-ambient{position:absolute;inset:-8% -3%;height:125%;width:106%;z-index:-1;color:#4bc8c6;opacity:.18;pointer-events:none;transition:opacity .5s ease}
+#expertise:has(.expertise-card:hover) .expertise-ambient{opacity:.34}
+#expertise .expertise-head{grid-template-columns:minmax(0,.83fr) minmax(0,1.17fr);gap:clamp(24px,4vw,55px);align-items:center;margin:30px 0 44px;}
+#expertise .expertise-intro h2{font-size:clamp(43px,5.2vw,71px)}
+#expertise .expertise-intro p{font-size:15px;line-height:1.85;max-width:530px}
+#expertise .expertise-network-panel{height:auto;min-height:344px;padding:18px 19px 13px;border-radius:13px;overflow:hidden;
+ background:linear-gradient(145deg,rgba(12,47,60,.94),rgba(5,20,34,.96));
+ border:1px solid rgba(83,237,214,.43);box-shadow:0 16px 45px rgba(0,0,0,.22),0 0 55px rgba(15,157,155,.10);transition:border-color .26s ease,box-shadow .35s ease}
+#expertise .expertise-network-panel:hover,#expertise .expertise-network-panel.is-linked{border-color:rgba(100,246,220,.68);box-shadow:0 22px 55px rgba(0,0,0,.27),0 0 38px rgba(45,213,190,.13)}
+#expertise .expertise-network-top{position:relative;z-index:1;align-items:center;font-size:10px;letter-spacing:.16em}
+#expertise .expertise-network-top .map-label{color:#8ec8c9!important;font-size:9px!important}
+#expertise .expertise-network-panel .network-diagram{display:block;width:100%;height:auto;max-height:315px;margin:5px auto 3px;overflow:visible}
+#expertise .map-core-halo{filter:drop-shadow(0 0 17px rgba(74,229,216,.34))}
+#expertise .map-core-ring{filter:drop-shadow(0 0 7px rgba(85,237,202,.32))}
+#expertise .map-core-lines path{opacity:.83}
+#expertise .core-caption{font:800 11px 'DM Sans',sans-serif;fill:#97e9d6;letter-spacing:1.5px}
+#expertise .map-link{opacity:.44;stroke-dasharray:5 9;stroke-width:1.8;transition:opacity .32s ease,stroke-width .32s ease,filter .32s ease}
+#expertise .signal-dot{opacity:0;filter:drop-shadow(0 0 7px #55edca)}
+#expertise .map-point{cursor:pointer;outline:none;transition:opacity .25s ease,filter .25s ease}
+#expertise .map-point rect{fill:#0b293a;stroke:#3e8999;stroke-width:1.2;transition:fill .25s ease,stroke .25s ease}
+#expertise .map-point circle{fill:#3ce0c7;filter:drop-shadow(0 0 6px rgba(89,248,215,.38))}
+#expertise .map-point text{font:800 15px 'Space Grotesk',sans-serif;fill:#e2f9f9;letter-spacing:.4px;pointer-events:none}
+#expertise .map-point text.point-detail{font:700 9px 'DM Sans',sans-serif;fill:#8db1c5;letter-spacing:.7px}
+#expertise .expertise-network-panel.is-linked .map-link{opacity:.13}
+#expertise .expertise-network-panel .map-link.is-signal{opacity:1;stroke-width:3.7;stroke-dasharray:8 10;filter:drop-shadow(0 0 7px #55edca);animation:trace-network 1.05s linear 1}
+#expertise .expertise-network-panel .map-point.is-signal{filter:drop-shadow(0 0 10px rgba(85,237,202,.48))}
+#expertise .expertise-network-panel .map-point.is-signal rect{fill:#16485a;stroke:#68fce5;stroke-width:2}
+#expertise .expertise-network-panel .map-point.is-signal text{fill:#fff}
+#expertise .expertise-network-panel .signal-dot.is-signal{opacity:1}
+@keyframes trace-network{from{stroke-dashoffset:35}to{stroke-dashoffset:0}}
+#expertise .expertise-network-bottom{gap:7px;flex-wrap:wrap;color:#abd5d9;font-size:9px;letter-spacing:.12em;padding-top:6px;border-top:1px solid rgba(83,195,201,.14)}
+#expertise .expertise-network-bottom strong{font-size:9px;color:#65eed6;margin-left:auto;letter-spacing:.08em}
+#expertise .expertise-grid{position:relative;z-index:1;gap:15px}
+#expertise .expertise-card{position:relative;min-height:285px;background:linear-gradient(160deg,rgba(8,21,36,.96),rgba(9,32,47,.92));border-color:rgba(87,174,190,.25);padding:23px 22px;border-radius:11px;transition:transform .26s ease,border-color .26s ease,box-shadow .26s ease;outline-offset:3px}
+#expertise .expertise-card::before{content:"";position:absolute;left:20px;right:20px;top:0;height:2px;background:linear-gradient(90deg,transparent,var(--aqua),transparent);opacity:0;transform:scaleX(.35);transition:opacity .28s ease,transform .28s ease}
+#expertise .expertise-card:hover,#expertise .expertise-card:focus-visible,#expertise .expertise-card.is-linked{transform:translateY(-5px);border-color:rgba(85,237,202,.7);box-shadow:0 17px 36px rgba(0,0,0,.25),0 0 30px rgba(67,220,199,.11)}
+#expertise .expertise-card:is(:hover,:focus-visible,.is-linked)::before{opacity:1;transform:scaleX(1)}
+#expertise .expertise-card p{font-size:13.5px;line-height:1.72;color:#9cb7c7}
+#expertise .expertise-card h3{font-size:clamp(18px,1.45vw,22px)}
+#expertise .expertise-card .tag-list span{color:#b1c6d2;border-color:rgba(85,181,196,.28)}
+
+/* Experience - alternating editorial milestones with an actual full-length,
+   measured spine. The Nestor / Terratek expansions span below their cards. */
+#experience.experience-section{position:relative;padding-bottom:125px}
+#experience .career-track-heading{display:flex;justify-content:space-between;gap:14px;padding:0 0 22px;color:var(--aqua);font-size:10px;font-weight:800;letter-spacing:.18em}
+#experience .career-track-heading span:last-child{color:var(--muted2)}
+#experience .timeline{position:relative;padding:16px 0 15px!important;border:0;--career-start:60px;--career-length:600px;--career-fill:0px}
+#experience .timeline::before,#experience .timeline::after{position:absolute;content:"";top:var(--career-start)!important;left:calc(50% - 1px)!important;width:2px;border-radius:6px;pointer-events:none;bottom:auto!important;transform:none!important}
+#experience .timeline::before{height:var(--career-length)!important;background:linear-gradient(180deg,rgba(90,193,204,.35),rgba(44,109,135,.30))}
+#experience .timeline::after{height:var(--career-fill)!important;background:linear-gradient(180deg,#91ffee,#4de8cb,#1b929f);box-shadow:0 0 13px rgba(75,233,213,.48);transition:height .17s linear}
+#experience .timeline-item{position:relative;display:grid!important;grid-template-columns:minmax(0,1fr) 82px minmax(0,1fr)!important;grid-template-rows:auto auto;gap:0 16px!important;padding:24px 0 40px!important;border:0!important;background:transparent!important}
+#experience .timeline-item::before{content:attr(data-career-step)!important;position:absolute!important;top:61px!important;left:calc(50% - 19px)!important;width:38px!important;height:38px!important;border:1.5px solid rgba(95,214,210,.6)!important;border-radius:50%!important;display:grid;place-items:center;font:800 10px 'Space Grotesk',sans-serif;color:#8adbd6;background:#0a2636;z-index:3;box-shadow:0 0 0 8px rgba(9,30,47,.8);transform:none!important;transition:background .3s ease,box-shadow .3s ease,border-color .3s ease,color .3s ease}
+#experience .timeline-item.is-career-active::before,#experience .timeline-item:has(details[open])::before,#experience .timeline-item:hover::before{background:#1a777a!important;color:#fff!important;border-color:#7ff6de!important;box-shadow:0 0 0 8px rgba(9,30,47,.85),0 0 22px rgba(76,244,214,.42)!important}
+#experience .timeline-item>.job-content{grid-column:3;grid-row:1;min-width:0;padding:25px 27px 26px;background:linear-gradient(150deg,rgba(14,38,57,.92),rgba(7,22,38,.96));border:1px solid rgba(113,188,200,.21);border-radius:13px;transition:border-color .27s ease,box-shadow .27s ease,transform .27s ease}
+#experience .timeline-item:nth-child(even)>.job-content{grid-column:1}
+#experience .timeline-item>.job-content:is(:hover,:focus-within),#experience .timeline-item.is-career-active>.job-content{border-color:rgba(72,210,193,.52);box-shadow:0 12px 35px rgba(0,0,0,.15),0 0 24px rgba(67,216,201,.08)}
+#experience .timeline-item>.job-content:hover{transform:translateY(-3px)}
+#experience .timeline-item>.job-time{grid-column:1;grid-row:1;align-self:start;justify-self:end;padding:68px 25px 0 12px;text-align:right;color:#55edca;font-size:13px;letter-spacing:.12em;line-height:1.5}
+#experience .timeline-item:nth-child(even)>.job-time{grid-column:3;justify-self:start;text-align:left;padding:68px 12px 0 25px}
+#experience .timeline-item .timeline-arrow{display:none}
+#experience .timeline-item .job-content h3{font-size:clamp(22px,2.2vw,30px);line-height:1.13}
+#experience .timeline-item .job-content>p:not(.job-company){color:#aabecd;font-size:13.5px;line-height:1.76}
+#experience .timeline-item .job-company{color:#e3f5f5;font-size:12.5px}
+#experience .timeline-item .job-tags span{font-size:10.5px;color:#a8c2d0}
+#experience .timeline-item>details.operations-detail{grid-column:1/-1;grid-row:2;width:min(100% - 100px,1010px);margin:14px auto 0;z-index:3;background:linear-gradient(140deg,#0c2639,#0b2032);border-color:rgba(85,237,202,.25)}
+#experience .timeline-item>details.operations-detail:hover{border-color:rgba(85,237,202,.62);box-shadow:0 0 17px rgba(62,218,196,.13)}
+#experience .timeline-item>details.operations-detail[open]{border-color:rgba(85,237,202,.55);box-shadow:0 16px 40px rgba(0,0,0,.24)}
+
+/* Education - a full-width visual journey with clear current / prospective status. */
+#education.education-section{position:relative;overflow:hidden;background:radial-gradient(ellipse at 80% 22%,rgba(15,147,146,.09),transparent 46%),var(--panel)}
+#education .learning-journey{margin:34px 0 27px;padding:24px 28px 19px;border-radius:13px;border:1px solid rgba(84,218,207,.31);background:linear-gradient(135deg,rgba(12,44,57,.9),rgba(6,25,39,.85));box-shadow:0 17px 46px rgba(0,0,0,.12)}
+#education .learning-journey-heading{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px 25px;padding-bottom:22px;border-bottom:1px solid rgba(84,218,207,.18)}
+#education .learning-journey-heading strong{font:700 clamp(18px,2vw,24px) 'Space Grotesk',sans-serif;color:var(--text)}
+#education .learning-journey-heading small{font-size:11px;color:var(--muted)}
+#education .learning-journey-stages{display:grid;grid-template-columns:minmax(0,1fr) 60px minmax(0,1fr) 60px minmax(0,1fr);gap:6px;align-items:center;margin:22px 0 17px}
+#education .learning-step{position:relative;min-width:0;min-height:175px;display:flex;flex-direction:column;padding:20px;border-radius:10px;border:1px solid rgba(81,194,192,.19);background:rgba(6,20,36,.55);transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease;cursor:default}
+#education .learning-step:is(:hover,:focus-visible,.is-glowing){transform:translateY(-4px);border-color:rgba(83,237,202,.7);box-shadow:0 12px 28px rgba(0,0,0,.13),0 0 24px rgba(79,221,201,.14)}
+#education .learning-step.is-future{border-style:dashed;background:rgba(12,33,44,.38)}
+#education .learning-index{color:#5fe9d2;font:800 10px 'DM Sans',sans-serif;letter-spacing:.17em}
+#education .learning-icon{font:500 27px 'Space Grotesk',sans-serif;line-height:1.1;color:#71e4d7;margin-top:11px}
+#education .learning-step strong{font:700 clamp(17px,1.65vw,23px) 'Space Grotesk',sans-serif;margin-top:9px;line-height:1.2;color:#edf9fa}
+#education .learning-step p{font-size:12px;line-height:1.6;color:#9cb9c8;margin-top:7px}
+#education .learning-step small{font-size:11px;color:#72d4c5;margin-top:auto;padding-top:9px;line-height:1.4}
+#education .learning-segment{height:3px;position:relative;border-radius:5px;background:rgba(85,237,202,.19);box-shadow:0 0 9px rgba(85,237,202,.12)}
+#education .learning-segment i{display:block;height:100%;width:0;background:#55edca;border-radius:4px;box-shadow:0 0 15px rgba(85,237,202,.36);transition:width .55s cubic-bezier(.3,.75,.2,1)}
+#education .learning-journey:has(.learning-step[data-stage="0"]:is(:hover,:focus-visible)) .learning-segment:first-of-type i,
+#education .learning-journey:has(.learning-step[data-stage="1"]:is(:hover,:focus-visible)) .learning-segment i,
+#education .learning-journey:has(.learning-step[data-stage="2"]:is(:hover,:focus-visible)) .learning-segment i,
+#education .learning-segment.is-glowing i{width:100%}
+#education .learning-segment span{position:absolute;top:15px;left:50%;transform:translateX(-50%);width:max-content;max-width:105px;text-align:center;font:800 9px 'DM Sans',sans-serif;letter-spacing:.12em;color:#87c5c3}
+#education .learning-journey-footer{display:flex;align-items:center;gap:20px;flex-wrap:wrap;color:#a4bdc9;font-size:11px}
+#education .learning-key{display:flex;align-items:center;gap:7px}
+#education .learning-key b{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--aqua)}
+#education .learning-key:last-child b{background:transparent;border:1px solid var(--aqua)}
+#education .education-grid{margin-top:22px}
+#education .school-card,#education .credentials-card,#education .prior-education{transition:border-color .25s ease,box-shadow .25s ease}
+#education .school-card:hover,#education .credentials-card:hover,#education .prior-education:hover{border-color:rgba(85,237,202,.44);box-shadow:0 10px 36px rgba(0,0,0,.14),0 0 25px rgba(48,193,179,.07)}
+#education .credential:hover{background:rgba(48,166,161,.11);transform:translateX(4px)}
+#education .credential:hover .credential-icon{box-shadow:0 0 19px rgba(74,230,211,.22)}
+
+/* Contact - centered editorial call to action, teal ambient linework and a
+   readable lower contact row. No newsletter/form that doesn't work. */
+#contact.cta-section{position:relative;isolation:isolate;padding-top:clamp(45px,6vh,85px);padding-bottom:90px;min-height:min(930px,100vh);display:flex;align-items:center;max-width:1550px;padding-inline:clamp(40px,8vw,110px)}
+#contact .contact-edge-waves{position:absolute;z-index:0;top:1%;bottom:3%;width:clamp(100px,14vw,230px);color:#25c8bd;opacity:.48;pointer-events:none}
+#contact .contact-edge-waves svg{width:100%;height:100%}
+#contact .wave-left{left:-8%;transform:rotate(180deg)}
+#contact .wave-right{right:-8%;transform:scaleX(-1)}
+#contact .contact-surface{position:relative;z-index:1;isolation:isolate;width:100%;min-height:630px;display:flex;flex-direction:column;overflow:hidden;border-radius:17px;background:radial-gradient(ellipse at 50% 56%,rgba(9,122,112,.30),transparent 53%),linear-gradient(155deg,#081824,#06121d 70%,#06121a);border:1px solid rgba(73,205,191,.32);box-shadow:0 25px 90px rgba(0,0,0,.23),0 0 65px rgba(20,173,161,.09);transition:border-color .4s ease,box-shadow .4s ease}
+#contact .contact-surface:hover{border-color:rgba(96,226,202,.6);box-shadow:0 25px 100px rgba(0,0,0,.26),0 0 62px rgba(30,198,180,.13)}
+#contact .contact-surface::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(90deg,transparent 0 8%,rgba(85,237,202,.055) 8.04%,transparent 8.1%,transparent 91.9%,rgba(85,237,202,.055) 91.96%,transparent 92%)}
+#contact .contact-constellation{position:absolute;inset:7% 9% 25%;z-index:-1;pointer-events:none;opacity:.22;color:#45cfbd;transition:opacity .4s ease}
+#contact .contact-constellation svg{width:100%;height:100%}
+#contact .contact-surface:hover .contact-constellation{opacity:.48}
+#contact .contact-topline{padding:22px 36px;display:flex;align-items:center;gap:18px;color:#68dccc;font:800 10px 'DM Sans',sans-serif;letter-spacing:.17em}
+#contact .contact-topline span:last-child{color:#80adaf}
+#contact .contact-topline-rule{flex:1;height:1px;background:linear-gradient(90deg,rgba(90,218,208,.4),transparent)}
+#contact .contact-center{display:flex;flex:1;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:50px 24px 67px}
+#contact .contact-center .eyebrow{justify-content:center;color:#75f1dc}
+#contact .contact-center h2{font-size:clamp(37px,4.1vw,66px);letter-spacing:-.05em;line-height:1.09;margin:21px 0 0;color:#f8fdff}
+#contact .contact-center>p{font-size:14.5px;line-height:1.75;color:#b0c8d0;max-width:650px;margin:20px auto 0}
+#contact .cta-buttons{justify-content:center;margin-top:24px;gap:12px}
+#contact .cta-buttons a,#contact .cta-buttons button{transition:transform .23s ease,box-shadow .23s ease,border-color .23s ease}
+#contact .cta-buttons .btn-primary:hover{box-shadow:0 0 32px rgba(85,237,202,.34)}
+#contact .contact-bottom{position:relative;display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:35px;padding:27px 43px 34px;background:rgba(0,8,15,.52);border-top:1px solid rgba(85,237,202,.20)}
+#contact .contact-mini-brand{display:flex;align-items:center;gap:13px}
+#contact .contact-mini-brand strong{font:800 32px 'Space Grotesk',sans-serif;letter-spacing:-.09em;color:#fff}
+#contact .contact-mini-brand strong span{color:var(--aqua)}
+#contact .contact-mini-brand small{font-size:10px;color:#a7c7ce;line-height:1.75;letter-spacing:.09em}
+#contact .contact-bottom-block{display:flex;flex-direction:column;align-items:flex-start;gap:5px}
+#contact .contact-bottom-block>span{font-size:9px;letter-spacing:.17em;font-weight:800;color:#5cdeca;margin-bottom:7px}
+#contact .contact-bottom-block a{font-size:13px;color:#e6f8fb;transition:color .2s ease,transform .2s ease}
+#contact .contact-bottom-block a:hover{color:#70ffdf;transform:translateX(3px)}
+#contact .contact-bottom-block small{font-size:12px;color:#9db3c1}
+
+/* Light mode legibility: preserve palette rather than bright text on light bg. */
+:root[data-theme="light"] #expertise .expertise-card,:root[data-theme="light"] #expertise .expertise-network-panel,
+:root[data-theme="light"] #experience .timeline-item>.job-content,:root[data-theme="light"] #education .learning-journey{color:#e9f9f9}
+:root[data-theme="light"] #expertise .expertise-intro,:root[data-theme="light"] #experience .section-header{color:var(--text)}
+
+@media(max-width:1050px){
+ #expertise .expertise-head{grid-template-columns:1fr;gap:22px}
+ #expertise .expertise-network-panel{max-width:810px;width:100%;margin-inline:auto}
+ #expertise .expertise-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ #experience .timeline-item{grid-template-columns:minmax(0,1fr) 62px minmax(0,1fr)!important}
+ #experience .timeline-item>.job-content{padding:20px 19px}
+ #education .learning-journey-stages{grid-template-columns:minmax(0,1fr) 25px minmax(0,1fr) 25px minmax(0,1fr)}
+ #education .learning-journey{padding:20px 18px}
+ #education .learning-step{padding:13px 12px;min-height:190px}
+ #education .learning-segment span{display:none}
+}
+@media(max-width:700px){
+ #expertise .expertise-network-panel{min-height:0;padding:13px 11px 10px}
+ #expertise .expertise-network-top .map-label{font-size:7px!important}
+ #expertise .expertise-grid{grid-template-columns:1fr}
+ #expertise .expertise-card{min-height:0}
+ #expertise .map-point text{font-size:12px}
+ #expertise .map-point text.point-detail{font-size:7px}
+ #experience .career-track-heading span:last-child{display:none}
+ #experience .timeline{padding-left:0!important}
+ #experience .timeline::before,#experience .timeline::after{left:19px!important}
+ #experience .timeline-item{display:flex!important;flex-direction:column;gap:9px!important;padding:22px 0 29px 56px!important}
+ #experience .timeline-item::before{top:32px!important;left:0px!important}
+ #experience .timeline-item>.job-time,#experience .timeline-item:nth-child(even)>.job-time{padding:0!important;align-self:flex-start;justify-self:start;text-align:left;font-size:11px}
+ #experience .timeline-item>.job-content{width:100%}
+ #experience .timeline-item>details.operations-detail{width:100%;margin:8px 0 0}
+ #education .learning-journey{padding:16px 14px}
+ #education .learning-journey-heading{gap:7px}
+ #education .learning-journey-stages{grid-template-columns:1fr;gap:12px}
+ #education .learning-step{min-height:0;padding:16px}
+ #education .learning-segment{width:3px;height:26px;justify-self:center}
+ #education .learning-segment i{width:100%;height:0;transition:height .5s ease}
+ #education .learning-segment.is-glowing i{height:100%}
+ #education .learning-journey-footer{gap:7px}
+ #contact.cta-section{padding-inline:16px;padding-top:45px;padding-bottom:75px}
+ #contact .contact-surface{min-height:650px}
+ #contact .contact-center{padding:55px 20px 50px}
+ #contact .contact-center h2{font-size:clamp(32px,8.2vw,46px)}
+ #contact .contact-center h2 br{display:none}
+ #contact .contact-bottom{grid-template-columns:1fr;gap:19px;padding:23px}
+ #contact .contact-edge-waves{opacity:.15}
+ #contact .contact-topline{padding-inline:19px;font-size:8px}
+}
+@media(prefers-reduced-motion:reduce){
+ #expertise .map-link.is-signal{animation:none!important}
+ #expertise .expertise-card,#education .learning-step,#experience .timeline-item>.job-content,#contact .contact-surface,#contact .contact-constellation{transition:none!important}
+}
+
+/* An open desktop Explorer is a real layout constraint: protect the reading
+   column from being hidden under the floating navigation. */
+@media (min-width: 1180px){
+  body.chapter-nav-enabled #expertise > .shell,
+  body.chapter-nav-enabled #education > .shell,
+  body.chapter-nav-enabled #experience.experience-section{
+    padding-right:clamp(205px,13.1vw,236px);
+  }
+}
+
+/* One restrained signal pulse from the contact action; never loops at rest. */
+#contact .cta-buttons .btn-primary{position:relative}
+#contact .cta-buttons .btn-primary::after{content:"";position:absolute;inset:-4px;border:1px solid rgba(91,245,218,.55);border-radius:9px;opacity:0;pointer-events:none}
+#contact .cta-buttons .btn-primary:is(:hover,:focus-visible)::after{animation:contact-action-ping 950ms ease-out 1}
+@keyframes contact-action-ping{0%{opacity:.65;transform:scale(.98)}100%{opacity:0;transform:scale(1.11)}}
+@media(prefers-reduced-motion:reduce){#contact .cta-buttons .btn-primary::after{animation:none!important}}

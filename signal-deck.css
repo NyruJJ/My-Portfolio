@@ -1,0 +1,197 @@
+/* Portfolio 2.0 — Signal Deck, an experimental cinematic section switch.
+   Scoped to chapter navigation; homepage at rest remains visually unchanged. */
+
+/* The active and departing section are briefly shown together. Neither gets
+   a scrolling container; a chapter still scrolls as an ordinary document. */
+html.chapter-navigation-enabled body.chapter-nav-enabled #main > .chapter-leaving{
+  display:block!important;
+  position:fixed!important;
+  right:0!important;
+  left:0!important;
+  width:100%!important;
+  z-index:27!important;
+  pointer-events:none!important;
+  transform-origin:center center;
+  contain:layout style;
+}
+html.chapter-navigation-enabled body.chapter-nav-enabled #main > .chapter-active.chapter-deck-in,
+html.chapter-navigation-enabled body.chapter-nav-enabled #main > .chapter-leaving.chapter-deck-out{
+  will-change:opacity,transform,filter;
+  backface-visibility:hidden;
+  animation-duration:820ms!important;
+  animation-timing-function:cubic-bezier(.16,.77,.17,1)!important;
+  animation-fill-mode:both!important;
+}
+html.chapter-navigation-enabled body.chapter-nav-enabled #main > .chapter-active.chapter-deck-in{
+  position:relative;
+  z-index:10;
+}
+html.chapter-navigation-enabled body.chapter-nav-enabled #main > .chapter-active.chapter-deck-in.forward{
+  animation-name:deck-in-forward!important;
+}
+html.chapter-navigation-enabled body.chapter-nav-enabled #main > .chapter-active.chapter-deck-in.reverse{
+  animation-name:deck-in-reverse!important;
+}
+html.chapter-navigation-enabled body.chapter-nav-enabled #main > .chapter-leaving.chapter-deck-out.forward{
+  animation-name:deck-out-forward!important;
+}
+html.chapter-navigation-enabled body.chapter-nav-enabled #main > .chapter-leaving.chapter-deck-out.reverse{
+  animation-name:deck-out-reverse!important;
+}
+@keyframes deck-in-forward{
+  0%{opacity:0;transform:translate3d(11vw,0,-80px) scale(.925) rotateY(5deg);filter:blur(7px) brightness(.72)}
+  30%{opacity:.17;filter:blur(5px) brightness(.8)}
+  61%{opacity:.88;filter:blur(.9px) brightness(1.06)}
+  100%{opacity:1;transform:translate3d(0,0,0) scale(1) rotateY(0);filter:blur(0) brightness(1)}
+}
+@keyframes deck-out-forward{
+  0%{opacity:1;transform:translate3d(0,0,0) scale(1) rotateY(0);filter:blur(0) brightness(1)}
+  42%{opacity:.69;transform:translate3d(-5vw,0,0) scale(.957) rotateY(-3deg);filter:blur(1px) brightness(.7)}
+  100%{opacity:0;transform:translate3d(-14vw,0,0) scale(.905) rotateY(-7deg);filter:blur(7px) brightness(.48)}
+}
+@keyframes deck-in-reverse{
+  0%{opacity:0;transform:translate3d(-11vw,0,-80px) scale(.925) rotateY(-5deg);filter:blur(7px) brightness(.72)}
+  30%{opacity:.17;filter:blur(5px) brightness(.8)}
+  61%{opacity:.88;filter:blur(.9px) brightness(1.06)}
+  100%{opacity:1;transform:translate3d(0,0,0) scale(1) rotateY(0);filter:blur(0) brightness(1)}
+}
+@keyframes deck-out-reverse{
+  0%{opacity:1;transform:translate3d(0,0,0) scale(1) rotateY(0);filter:blur(0) brightness(1)}
+  42%{opacity:.69;transform:translate3d(5vw,0,0) scale(.957) rotateY(3deg);filter:blur(1px) brightness(.7)}
+  100%{opacity:0;transform:translate3d(14vw,0,0) scale(.905) rotateY(7deg);filter:blur(7px) brightness(.48)}
+}
+
+/* A narrow routing signal crosses the scene. It's CSS only; no risky remote
+   scripts or additional image dependencies. */
+.chapter-deck-fx{
+  position:fixed;
+  inset:0;
+  z-index:102;
+  overflow:hidden;
+  pointer-events:none;
+  opacity:0;
+  visibility:hidden;
+  color:#58e8d5;
+}
+.chapter-deck-fx.is-playing{
+  opacity:1;
+  visibility:visible;
+}
+.chapter-deck-fx .deck-screen-tint{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(90deg,transparent 20%,rgba(40,208,196,.055) 49%,transparent 79%);
+  opacity:0;
+  animation:none;
+}
+.chapter-deck-fx.is-playing .deck-screen-tint{animation:deck-tint 820ms ease both}
+@keyframes deck-tint{0%,100%{opacity:0}45%{opacity:1}}
+.chapter-deck-fx .deck-sweep{
+  position:absolute;
+  top:0;
+  bottom:0;
+  width:2px;
+  left:0;
+  background:linear-gradient(to bottom,transparent 2%,rgba(101,255,229,.2) 17%,#56e8d8 50%,rgba(101,255,229,.25) 78%,transparent 98%);
+  box-shadow:0 0 12px rgba(93,248,228,.75),0 0 45px rgba(63,214,209,.25);
+  opacity:0;
+  animation:none;
+}
+.chapter-deck-fx .deck-sweep::after{
+  content:'';
+  position:absolute;
+  top:0;bottom:0;
+  left:-68px;
+  width:135px;
+  background:linear-gradient(90deg,transparent,rgba(75,235,217,.09) 48%,transparent);
+}
+.chapter-deck-fx.is-playing.forward .deck-sweep{animation:deck-sweep-forward 820ms cubic-bezier(.21,.59,.34,.98) both}
+.chapter-deck-fx.is-playing.reverse .deck-sweep{animation:deck-sweep-reverse 820ms cubic-bezier(.21,.59,.34,.98) both}
+@keyframes deck-sweep-forward{0%{left:5%;opacity:0}15%{opacity:1}70%{opacity:.88}100%{left:95%;opacity:0}}
+@keyframes deck-sweep-reverse{0%{left:95%;opacity:0}15%{opacity:1}70%{opacity:.88}100%{left:5%;opacity:0}}
+
+.chapter-deck-fx .deck-label{
+  position:absolute;
+  top:46%;left:50%;
+  transform:translate(-50%,-50%);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:7px;
+  white-space:nowrap;
+  text-align:center;
+  text-shadow:0 2px 22px rgba(0,0,0,.75);
+  opacity:0;
+}
+.chapter-deck-fx.is-playing .deck-label{animation:deck-label-fade 820ms ease-out both}
+.deck-label .deck-eyebrow{font:800 10px 'DM Sans',sans-serif;letter-spacing:.3em;color:#6fe8dc;text-transform:uppercase}
+.deck-label .deck-name{font:700 clamp(30px,4.5vw,70px)/1.1 'Space Grotesk',sans-serif;letter-spacing:-.04em;color:#effefd}
+.deck-label .deck-line{width:36px;height:2px;background:#52e5d0;box-shadow:0 0 16px rgba(74,238,210,.7)}
+@keyframes deck-label-fade{
+  0%{opacity:0;transform:translate(-50%,-38%) scale(.94)}
+  30%{opacity:0;transform:translate(-50%,-43%) scale(.96)}
+  48%,65%{opacity:.96;transform:translate(-50%,-50%) scale(1)}
+  100%{opacity:0;transform:translate(-50%,-65%) scale(1.03)}
+}
+
+/* A live route-line and upgraded edge paddles convey navigation at rest. */
+body.chapter-nav-enabled .chapter-arrow{
+  border-radius:13px;
+  border-color:rgba(87,214,211,.28);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.028),0 0 16px rgba(32,190,183,.065);
+  overflow:hidden;
+}
+body.chapter-nav-enabled .chapter-arrow::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  opacity:0;
+  background:linear-gradient(110deg,transparent 20%,rgba(83,255,229,.2) 50%,transparent 80%);
+  transform:translateX(-95%);
+  transition:opacity .2s ease,transform .5s ease;
+  pointer-events:none;
+}
+body.chapter-nav-enabled .chapter-arrow:hover::before,
+body.chapter-nav-enabled .chapter-arrow:focus-visible::before{opacity:1;transform:translateX(95%)}
+body.chapter-nav-enabled .chapter-arrow:hover,
+body.chapter-nav-enabled .chapter-arrow:focus-visible{border-color:rgba(100,245,226,.72);box-shadow:0 0 23px rgba(55,233,209,.21),inset 0 0 12px rgba(48,197,199,.08)}
+body.chapter-nav-enabled .chapter-arrow .chapter-arrow-glyph{filter:drop-shadow(0 0 7px rgba(78,226,215,.18))}
+body.chapter-nav-enabled .chapter-position{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  border-color:rgba(75,195,200,.27);
+  background:rgba(6,23,36,.73);
+  box-shadow:0 0 22px rgba(14,133,148,.06);
+}
+.chapter-progress{display:flex;gap:4px;align-items:center}
+.chapter-progress i{display:block;width:12px;height:3px;border-radius:3px;background:rgba(97,180,190,.27);transition:width .35s ease,background .35s ease,box-shadow .35s ease}
+.chapter-progress i.is-current{width:24px;background:#55edca;box-shadow:0 0 9px rgba(85,237,202,.37)}
+.chapter-route-label{color:#99c5c9;font-weight:700;letter-spacing:.13em}
+body.chapter-nav-enabled.chapter-home .chapter-position{display:none!important}
+body.chapter-changing{overflow:hidden!important}
+
+@media(max-width:900px){
+  .chapter-deck-fx .deck-label{top:43%}
+  .deck-label .deck-eyebrow{font-size:9px;letter-spacing:.22em}
+  html.chapter-navigation-enabled body.chapter-nav-enabled #main>.chapter-active.chapter-deck-in,
+  html.chapter-navigation-enabled body.chapter-nav-enabled #main>.chapter-leaving.chapter-deck-out{animation-duration:720ms!important}
+  .chapter-deck-fx.is-playing .deck-sweep,
+  .chapter-deck-fx.is-playing .deck-label,
+  .chapter-deck-fx.is-playing .deck-screen-tint{animation-duration:720ms!important}
+}
+@media(max-width:680px){
+  .chapter-progress i{width:7px}
+  .chapter-progress i.is-current{width:13px}
+  body.chapter-nav-enabled .chapter-position{gap:7px}
+  .chapter-route-label{font-size:7px;letter-spacing:.09em}
+  .chapter-deck-fx .deck-label{max-width:90vw}
+  .deck-label .deck-name{font-size:clamp(25px,8vw,44px)}
+}
+@media(prefers-reduced-motion:reduce){
+  html.chapter-navigation-enabled body.chapter-nav-enabled #main>.chapter-active.chapter-deck-in,
+  html.chapter-navigation-enabled body.chapter-nav-enabled #main>.chapter-leaving.chapter-deck-out{animation:none!important}
+  .chapter-deck-fx{display:none!important}
+  body.chapter-nav-enabled .chapter-arrow::before{display:none}
+  .chapter-progress i{transition:none}
+}

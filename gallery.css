@@ -1,0 +1,52 @@
+/* Portfolio 2.0 — Gallery: natural scroll, no scroll lock or snapping. */
+html {scroll-behavior:smooth;scroll-snap-type:none!important;}
+body {overflow-y:auto!important;}
+#main {overflow:visible!important;display:block!important;transform:none!important;}
+#main > .opening-screen {isolation:isolate;position:relative;overflow:hidden;}
+/* Full-sized black grid, restricted to the first screen. */
+.hero-grid-pattern{position:absolute;inset:0;z-index:-1;pointer-events:none;background-image:linear-gradient(rgba(0,0,0,.60) 1px, transparent 1px),linear-gradient(90deg,rgba(0,0,0,.60) 1px,transparent 1px);background-size:82px 82px;opacity:.83;}
+.opening-screen>.hero,.opening-screen>.metrics-wrap{position:relative;z-index:2;}
+/* Teal falling code strings. Entirely CSS based; no flagged ambient.js or network code. */
+.hero-code-streams{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:1;}
+.code-stream{position:absolute;top:-28%;left:2%;font:600 11px/1.28 ui-monospace,SFMono-Regular,Consolas,monospace;color:rgba(59,219,197,.53);white-space:normal;overflow-wrap:anywhere;word-break:break-all;width:11px;letter-spacing:3px;writing-mode:vertical-rl;text-orientation:upright;text-shadow:0 0 8px rgba(34,210,186,.3);opacity:0;animation:gallery-rain 13s linear infinite;}
+.stream-0{left:2%;animation-delay:-2s;animation-duration:15s}.stream-1{left:5%;animation-delay:-7s;animation-duration:18s}.stream-2{left:10%;animation-delay:-4s;animation-duration:19s}.stream-3{left:15%;animation-delay:-13s;animation-duration:16s}.stream-4{left:20%;animation-delay:-9s;animation-duration:21s;opacity:.3}.stream-5{left:89%;animation-delay:-4s;animation-duration:18s}.stream-6{left:93%;animation-delay:-11s;animation-duration:17s}.stream-7{left:97%;animation-delay:-2s;animation-duration:20s}.stream-8{left:86%;animation-delay:-8s;animation-duration:16s}.stream-9{left:82%;animation-delay:-14s;animation-duration:23s}.stream-10{left:8%;animation-delay:-16s;animation-duration:22s}.stream-11{left:95%;animation-delay:-6s;animation-duration:14s}
+@keyframes gallery-rain{0%{transform:translateY(-10vh);opacity:0}15%{opacity:.32}48%{opacity:.55}75%{opacity:.3}100%{transform:translateY(118vh);opacity:0}}
+/* Gallery effect is focused on section content, rather than scrolling the whole page as a card. */
+@media(min-width:961px){
+.gallery-panel{transform-origin:50% 26%;transition:opacity .7s ease,transform .85s cubic-bezier(.2,.75,.16,1);}
+.gallery-panel.gallery-enter{opacity:.18;transform:translate3d(0,44px,0) scale(.97);}
+.gallery-panel.gallery-active{opacity:1;transform:translateZ(0) scale(1);}
+.gallery-panel.gallery-past{opacity:.72;transform:translate3d(0,-12px,0) scale(.995);}
+}
+@media(prefers-reduced-motion:reduce){.code-stream{animation:none;opacity:.16}.gallery-panel{transition:none!important;transform:none!important;opacity:1!important}}
+
+/* Interactive edge lattice: the base black grid remains unchanged.
+   Only the cells near the pointer acquire a soft turquoise light. */
+.opening-screen .edge-grid-reactive {
+  position:absolute; inset:0; z-index:1; pointer-events:none; overflow:hidden;
+  --light-x: -1000px; --light-y: -1000px; --light-strength:0;
+}
+.opening-screen .edge-grid-reactive::before,
+.opening-screen .edge-grid-reactive::after {
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background-image:
+    linear-gradient(rgba(64,228,204,.72) 1px, transparent 1px),
+    linear-gradient(90deg,rgba(64,228,204,.72) 1px, transparent 1px);
+  background-size:82px 82px;
+  opacity:var(--light-strength);
+  -webkit-mask-image:radial-gradient(circle 190px at var(--light-x) var(--light-y), #000 0%, rgba(0,0,0,.62) 32%, transparent 82%);
+  mask-image:radial-gradient(circle 190px at var(--light-x) var(--light-y), #000 0%, rgba(0,0,0,.62) 32%, transparent 82%);
+}
+.opening-screen .edge-grid-reactive::after {
+  filter:blur(7px);
+  opacity:calc(var(--light-strength) * .62);
+}
+@media (hover:none), (pointer:coarse), (max-width:960px), (prefers-reduced-motion:reduce) {
+  .opening-screen .edge-grid-reactive {display:none;}
+}
+
+/* The reactive grid covers the full opening screen, not only its side gutters.
+   Leave a small section of the same grid visible below the stats strip. */
+.opening-screen{padding-bottom:22px;background:var(--bg);}
+.opening-screen .edge-grid-reactive{inset:0;}
+@media(max-width:960px){.opening-screen{padding-bottom:12px;}}

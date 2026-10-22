@@ -1,0 +1,640 @@
+/* ============================================================
+   NYRU JACKSON • SIGNAL DECK v20 • GLACIER / IVORY
+   A separately scoped LIGHT-MODE art direction.
+   NEVER edit dark-mode selectors in this file. v19 stays safe.
+   ============================================================ */
+
+:root[data-theme="light"] {
+  /* Rich cream, glacier blue, steel, dark slate. */
+  --bg:#E8D9C0;
+  --panel:#F5EBDD;
+  --panel-2:#D9E8ED;
+  --surface:#C7DFE9;
+  --line:rgba(48,72,85,.21);
+  --line2:rgba(42,70,88,.36);
+  --text:#18242D;
+  --muted:#303E48;
+  --muted2:#3D4A53;
+  --aqua:#27718D;
+  --aqua-strong:#1D607C;
+  --blue:#327D9C;
+  --nav:rgba(244,238,226,.93);
+  --dark-shadow:0 19px 48px rgba(47,70,83,.17);
+  --v20-cream:#E8D9C0;
+  --v20-ivory:#F5EBDD;
+  --v20-ice:#A9D5E9;
+  --v20-ice-pale:#DDEEF3;
+  --v20-silver:#536675;
+  --v20-slate:#253541;
+  --v20-ink:#263947;
+  color-scheme:light;
+}
+
+:root[data-theme="light"] body {
+  background:var(--v20-cream);
+  color:var(--v20-slate);
+}
+:root[data-theme="light"] .noise {opacity:.014;}
+:root[data-theme="light"] ::selection{background:#86c4de;color:#152b38}
+:root[data-theme="light"] :focus-visible{outline-color:#276d85}
+
+/* Shared editorial details: bold headings stay unchanged in scale/weight. */
+:root[data-theme="light"] .section-header h2,
+:root[data-theme="light"] .hero h1,
+:root[data-theme="light"] .school-card h3,
+:root[data-theme="light"] .project-card h3 {color:var(--v20-ink)}
+:root[data-theme="light"] h1 em,
+:root[data-theme="light"] h2 em,
+:root[data-theme="light"] h3 em {color:#276F8D}
+:root[data-theme="light"] .section-kicker,
+:root[data-theme="light"] .tiny-heading,
+:root[data-theme="light"] .project-group-name,
+:root[data-theme="light"] .eyebrow,
+:root[data-theme="light"] .career-track-heading {color:#276983}
+:root[data-theme="light"] .section-rule,
+:root[data-theme="light"] .project-group-line {
+  background:linear-gradient(90deg,#327994,rgba(92,142,162,.49) 44%,rgba(83,113,129,.09) 100%);
+}
+:root[data-theme="light"] .btn-primary {
+  background:#2B536A;
+  color:#FAF3E5;
+  border-color:#2B536A;
+  box-shadow:0 9px 22px rgba(47,87,109,.18);
+}
+:root[data-theme="light"] .btn-primary:is(:hover,:focus-visible){
+  background:#1F465D;
+  border-color:#1F465D;
+  box-shadow:0 12px 27px rgba(47,87,109,.28);
+}
+:root[data-theme="light"] .btn-outline{
+  background:rgba(250,247,238,.48);
+  color:#293E4C;
+  border-color:rgba(51,83,101,.43);
+}
+:root[data-theme="light"] .btn-outline:is(:hover,:focus-visible){
+  border-color:#346F89;
+  background:rgba(181,218,234,.48);
+}
+
+/* ------------------------------------------------------------
+   HOME: cream-to-ice atmosphere; all approved geometry stays.
+   ------------------------------------------------------------ */
+:root[data-theme="light"] .opening-screen {
+  background:
+    radial-gradient(ellipse at 79% 42%,rgba(144,204,231,.62),transparent 39%),
+    radial-gradient(ellipse at 17% 24%,rgba(255,249,235,.78),transparent 48%),
+    linear-gradient(115deg,#E8D9C0 0%,#E8DFC9 41%,#D6E4E9 100%) !important;
+}
+:root[data-theme="light"] .opening-screen .hero-grid-pattern{
+  opacity:.94;
+  background-image:
+    linear-gradient(rgba(37,55,67,.23) 1px, transparent 1px),
+    linear-gradient(90deg,rgba(37,55,67,.23) 1px,transparent 1px)!important;
+}
+:root[data-theme="light"] .opening-screen .edge-grid-reactive{opacity:.76;filter:saturate(.9)}
+:root[data-theme="light"] .opening-screen .edge-grid-reactive::before,
+:root[data-theme="light"] .opening-screen .edge-grid-reactive::after{
+  background-image:
+    linear-gradient(rgba(39,113,141,.86) 1px, transparent 1px),
+    linear-gradient(90deg,rgba(39,113,141,.86) 1px,transparent 1px);
+}
+:root[data-theme="light"] .opening-screen .hero-code-streams{opacity:.82;filter:grayscale(.08) contrast(1.45)}
+:root[data-theme="light"] .opening-screen .code-stream{color:#315D70!important;text-shadow:0 0 12px rgba(39,113,141,.36)!important}
+:root[data-theme="light"] .hero .eyebrow,
+:root[data-theme="light"] .hero .eyebrow .online-dot {color:#286B83}
+:root[data-theme="light"] .hero h1 em,
+:root[data-theme="light"] .hero h1 .aqua {color:#286E8D}
+:root[data-theme="light"] .hero-lede,
+:root[data-theme="light"] .hero-copy p{color:#26323A}
+:root[data-theme="light"] .hero-lede strong,
+:root[data-theme="light"] .hero-copy p strong{color:#18242D}
+:root[data-theme="light"] .hero-meta{color:#303E48}
+:root[data-theme="light"] .hero-photo-panel{
+  border-color:rgba(50,105,131,.61);
+  background:linear-gradient(160deg,#C8DFE6,#6F99AB);
+  box-shadow:0 18px 55px rgba(45,77,95,.27),inset 0 1px 0 rgba(255,255,255,.7);
+}
+/* Caption remains white over the real photo by design. */
+:root[data-theme="light"] .hero-photo-panel figcaption{color:#F9FFFF}
+:root[data-theme="light"] .hero-photo-panel .portrait-quote-author{color:#A9E7F2}
+:root[data-theme="light"] .opening-screen>.metrics-wrap {
+  background:linear-gradient(105deg,rgba(208,231,238,.62),rgba(235,225,207,.42),rgba(184,214,228,.64))!important;
+  border-block:1px solid rgba(71,114,135,.37)!important;
+  -webkit-backdrop-filter:blur(5px) saturate(1.12)!important;
+  backdrop-filter:blur(5px) saturate(1.12)!important;
+  box-shadow:0 6px 24px rgba(58,84,98,.08),inset 0 1px 0 rgba(255,255,255,.43)!important;
+}
+:root[data-theme="light"] .opening-screen>.metrics-wrap::before{
+  background:radial-gradient(ellipse at 60% 55%,rgba(96,164,197,.19),transparent 65%)!important;
+  opacity:.6!important;
+}
+:root[data-theme="light"] .opening-screen .metric strong{color:#263845}
+:root[data-theme="light"] .opening-screen .metric-content>span{color:#26323A}
+:root[data-theme="light"] .opening-screen .metric:not(:last-child)::after{
+  background:linear-gradient(180deg,transparent,rgba(65,103,122,.39),transparent)!important;
+}
+:root[data-theme="light"] .opening-screen .metric-content::before{
+  background:#397C99;
+  box-shadow:0 0 10px rgba(60,145,181,.3);
+}
+
+/* Floating header and rune explorer: ivory / frosted ice / slate. */
+:root[data-theme="light"] .sheikah-brand,
+:root[data-theme="light"] .chapter-home-button,
+:root[data-theme="light"] .sheikah-theme,
+:root[data-theme="light"] .sheikah-trigger {
+  background:linear-gradient(160deg,rgba(248,241,225,.91),rgba(216,235,242,.88))!important;
+  color:#283E4D;
+  border-color:rgba(57,98,119,.42)!important;
+  box-shadow:0 8px 26px rgba(48,76,93,.12),inset 0 1px rgba(255,255,255,.7)!important;
+}
+:root[data-theme="light"] .sheikah-brand-title{color:#273847}
+:root[data-theme="light"] .sheikah-brand-sub{color:#516A7B}
+:root[data-theme="light"] .sheikah-brand-dot{
+  background:#327E9D;
+  box-shadow:0 0 10px rgba(71,141,175,.55);
+}
+:root[data-theme="light"] .sheikah-trigger-label{color:#263F50}
+:root[data-theme="light"] .sheikah-trigger-sub{color:#486C7F}
+:root[data-theme="light"] .sheikah-theme svg,
+:root[data-theme="light"] .chapter-home-button svg{color:#2D657F}
+:root[data-theme="light"] .sheikah-trigger-core{
+  border-color:rgba(50,119,151,.67);
+  box-shadow:0 0 13px rgba(84,163,192,.25),inset 0 0 10px rgba(94,155,177,.14);
+}
+:root[data-theme="light"] .sheikah-trigger-core::after{
+  background:#4D92AD;
+  box-shadow:0 0 12px rgba(61,140,178,.55);
+}
+:root[data-theme="light"] .sheikah-trigger:is(:hover,:focus-visible),
+:root[data-theme="light"] .chapter-home-button:is(:hover,:focus-visible){
+  border-color:#317899!important;
+  box-shadow:0 0 20px rgba(62,141,177,.18),inset 0 1px rgba(255,255,255,.8)!important;
+}
+:root[data-theme="light"] .rune-selector {
+  background:linear-gradient(145deg,rgba(246,240,227,.97),rgba(211,234,242,.98))!important;
+  border-color:rgba(50,115,143,.67)!important;
+  box-shadow:0 18px 46px rgba(40,72,90,.21),0 0 22px rgba(88,160,197,.12)!important;
+  color:#2B4658;
+}
+:root[data-theme="light"] .rune-selector::before,
+:root[data-theme="light"] .rune-selector::after{
+  border-color:rgba(59,126,153,.6)!important;
+}
+:root[data-theme="light"] .rune-selector-top{color:#2D617A!important}
+:root[data-theme="light"] .rune-close{color:#3B5C6C!important}
+:root[data-theme="light"] .rune-tile{
+  background:linear-gradient(145deg,rgba(244,250,249,.79),rgba(167,207,225,.51))!important;
+  color:#2D4654!important;
+  border-color:rgba(62,117,144,.35)!important;
+}
+:root[data-theme="light"] .rune-tile .rune-glyph{color:#377A97!important;text-shadow:none!important}
+:root[data-theme="light"] .rune-tile .rune-name{color:#344D5C!important}
+:root[data-theme="light"] .rune-tile:is(:hover,:focus-visible,.is-preview,.is-active,.active){
+  border-color:#377E9B!important;
+  background:linear-gradient(140deg,#B0D8EA,#D2E8ED)!important;
+  box-shadow:inset 0 0 12px rgba(75,142,171,.17),0 0 20px rgba(71,140,170,.17)!important;
+}
+:root[data-theme="light"] .rune-detail,
+:root[data-theme="light"] .rune-selector-footer{color:#526B79}
+:root[data-theme="light"] .rune-detail strong{color:#285D77!important}
+:root[data-theme="light"] .rune-detail span{color:#496777!important}
+:root[data-theme="light"] .rune-selector-footer{border-top-color:rgba(65,102,118,.25)!important}
+
+/* Chapter controls retain their navigation behavior and animation timing. */
+:root[data-theme="light"] body.chapter-nav-enabled .chapter-arrow,
+:root[data-theme="light"] .chapter-arrows .chapter-arrow{
+  background:linear-gradient(145deg,rgba(246,239,224,.92),rgba(186,218,232,.9))!important;
+  border-color:rgba(55,111,135,.44)!important;
+  color:#27546A;
+  box-shadow:0 9px 20px rgba(48,80,97,.15);
+}
+:root[data-theme="light"] body.chapter-nav-enabled .chapter-arrow:hover{
+  border-color:#377996!important;
+  box-shadow:0 0 26px rgba(57,138,172,.2),0 9px 24px rgba(48,80,97,.18);
+}
+:root[data-theme="light"] .chapter-arrow-glyph{color:#2B6C87}
+:root[data-theme="light"] body.chapter-nav-enabled .chapter-position{
+  background:rgba(232,240,238,.94);
+  border-color:rgba(48,106,137,.38);
+  color:#345367;
+}
+:root[data-theme="light"] .chapter-deck-fx{
+  color:#2A728A;
+}
+:root[data-theme="light"] .chapter-deck-fx .deck-screen-tint{
+  background:linear-gradient(90deg,transparent 20%,rgba(75,148,185,.13) 49%,transparent 79%);
+}
+:root[data-theme="light"] .chapter-deck-fx .deck-sweep{
+  background:linear-gradient(180deg,transparent 2%,rgba(54,119,152,.2) 17%,#3C92B8 50%,rgba(54,119,152,.25) 78%,transparent 98%);
+}
+:root[data-theme="light"] .chapter-deck-fx .deck-label{
+  text-shadow:0 0 25px rgba(244,250,246,.85);
+}
+
+/* ------------------------------------------------------------
+   PROJECTS: presentation only; content and interactions untouched.
+   Dark screenshots gain intentional framed contrast on ivory cards.
+   ------------------------------------------------------------ */
+:root[data-theme="light"] #work {
+  background:linear-gradient(135deg,#E8D9C0,#EEE4D2 45%,#DDEBF0);
+}
+:root[data-theme="light"] .project-card{
+  background:linear-gradient(160deg,#FAF2E4,#E9F0EF);
+  color:#263946;
+  border-color:rgba(57,93,111,.3);
+  box-shadow:0 10px 30px rgba(62,77,86,.09);
+}
+:root[data-theme="light"] .project-card.flagship-project{
+  background:linear-gradient(125deg,#CDE3EA,#F3E9D8);
+  border-color:rgba(48,113,144,.52);
+}
+:root[data-theme="light"] .project-card:is(:hover,:focus-within){
+  border-color:#367E9D;
+  box-shadow:0 18px 40px rgba(45,83,103,.18);
+}
+:root[data-theme="light"] .project-card p,
+:root[data-theme="light"] .project-card-body p,
+:root[data-theme="light"] .project-card .project-meta,
+:root[data-theme="light"] .flagship-explainer{color:#455B68}
+:root[data-theme="light"] .project-card-link,
+:root[data-theme="light"] .flagship-kicker{color:#266781}
+:root[data-theme="light"] .project-image{background:#284555}
+:root[data-theme="light"] .chip{
+  color:#355363;
+  border-color:rgba(49,94,115,.41);
+  background:rgba(250,242,224,.4);
+}
+:root[data-theme="light"] .chip.active{
+  color:#214C66;
+  border-color:#377C9A;
+  background:#C5E1EC;
+}
+:root[data-theme="light"] .project-search{border-bottom-color:rgba(47,97,122,.5)}
+:root[data-theme="light"] .project-search input{color:#263B49}
+:root[data-theme="light"] .tag-list span,
+:root[data-theme="light"] .project-card .project-tags span{color:#3F6072}
+
+/* ------------------------------------------------------------
+   EXPERTISE: maintain live constellation motion while changing
+   its contrast to glacier-blue dots against cream / pale blue.
+   ------------------------------------------------------------ */
+:root[data-theme="light"] #expertise.feature-section{
+  background:
+    radial-gradient(ellipse at 76% 20%,rgba(107,172,204,.48),transparent 45%),
+    radial-gradient(ellipse at 10% 75%,rgba(249,240,221,.9),transparent 60%),
+    #DDE8E8;
+}
+:root[data-theme="light"] #expertise .expertise-intro p{color:#435C6C}
+:root[data-theme="light"] #expertise .expertise-card{
+  background:linear-gradient(150deg,rgba(250,244,229,.95),rgba(213,231,235,.96));
+  color:#293E4D!important;
+  border-color:rgba(61,106,130,.32);
+  box-shadow:0 10px 25px rgba(56,90,109,.09);
+}
+:root[data-theme="light"] #expertise .expertise-card h3{color:#253A49}
+:root[data-theme="light"] #expertise .expertise-card p{color:#4A6171}
+:root[data-theme="light"] #expertise .expertise-card .tag-list span{
+  color:#35566A;
+  border-color:rgba(61,103,122,.36);
+  background:rgba(255,255,255,.27);
+}
+:root[data-theme="light"] #expertise .expertise-card .expertise-symbol{color:#327C9C}
+:root[data-theme="light"] #expertise .expertise-card:is(:hover,:focus-visible,.is-linked){
+  border-color:#387E9B;
+  box-shadow:0 17px 36px rgba(58,91,112,.16),0 0 26px rgba(85,160,200,.14);
+}
+/* Keep schematic dark-slate in light mode: readable node labels and diagram. */
+:root[data-theme="light"] #expertise .expertise-network-panel{
+  color:#E8FAFD!important;
+  background:linear-gradient(150deg,#3A5263,#273E50 65%,#284B62);
+  border-color:rgba(42,93,117,.56);
+  box-shadow:0 18px 37px rgba(45,70,84,.22);
+}
+:root[data-theme="light"] #expertise .expertise-network-top .map-label,
+:root[data-theme="light"] #expertise .expertise-network-bottom{color:#C0DEEA!important}
+:root[data-theme="light"] #expertise .expertise-network-bottom strong{color:#AEE4F7}
+:root[data-theme="light"] #expertise .map-link{stroke:#A9DAEE}
+:root[data-theme="light"] #expertise .map-point rect{fill:#2D4C62;stroke:#82BDD6}
+:root[data-theme="light"] #expertise .map-point.is-signal rect{fill:#346E87;stroke:#B6EAFD}
+:root[data-theme="light"] #expertise .map-point circle{fill:#BAEAF9}
+:root[data-theme="light"] #expertise .map-point text{fill:#F2FAFE}
+:root[data-theme="light"] #expertise .map-point text.point-detail{fill:#C1DEEE}
+:root[data-theme="light"] #expertise .signal-dot{fill:#E3F8FF;filter:drop-shadow(0 0 7px rgba(173,228,254,.8))}
+:root[data-theme="light"] #expertise .constellation-field{opacity:.8;filter:hue-rotate(24deg) saturate(.85)}
+
+/* ------------------------------------------------------------
+   EXPERIENCE: strong ice-blue cards / steel timeline while
+   keeping the identical v19 layout and separate popout behavior.
+   ------------------------------------------------------------ */
+:root[data-theme="light"] #experience.experience-section{
+  background:
+    radial-gradient(ellipse at 20% 30%,rgba(169,207,222,.3),transparent 48%),
+    linear-gradient(120deg,#E9DDC8,#DFE8E7);
+}
+:root[data-theme="light"] #experience .timeline-item>.job-content{
+  background:linear-gradient(150deg,#F6EEDF,#D7E9EF)!important;
+  border-color:rgba(60,104,123,.35);
+  box-shadow:0 10px 26px rgba(54,91,110,.10);
+  color:#2A3F4F!important;
+}
+:root[data-theme="light"] #experience .timeline-item>.job-content h3{color:#283A47}
+:root[data-theme="light"] #experience .timeline-item .job-company{color:#334C5C}
+:root[data-theme="light"] #experience .timeline-item .job-company span{color:#367B98}
+:root[data-theme="light"] #experience .timeline-item .job-content>p:not(.job-company){color:#4A6272}
+:root[data-theme="light"] #experience .timeline-item .job-content>p strong{color:#243946}
+:root[data-theme="light"] #experience .timeline-item .job-tags span{
+  color:#3B5B6C;
+  border-color:rgba(55,97,119,.34);
+  background:rgba(245,246,238,.52);
+}
+:root[data-theme="light"] #experience .timeline-item>.job-time,
+:root[data-theme="light"] #experience .career-track-heading{color:#2B6F8C!important}
+:root[data-theme="light"] #experience .career-track-heading span:last-child{color:#526D7C}
+:root[data-theme="light"] #experience .timeline-item::before{
+  color:#2C627C!important;
+  background:#D5E5EC!important;
+  border-color:#3D819E!important;
+  box-shadow:0 0 0 4px #E5DEC9!important;
+}
+:root[data-theme="light"] #experience .timeline-item.is-career-active::before,
+:root[data-theme="light"] #experience .timeline-item:hover::before,
+:root[data-theme="light"] #experience .timeline-item:has(details[open])::before{
+  background:#5DA0B9!important;
+  color:#F9FFFF!important;
+  border-color:#377C99!important;
+  box-shadow:0 0 0 4px #E1E7E2,0 0 18px rgba(69,137,170,.43)!important;
+}
+:root[data-theme="light"] #experience .career-segment{
+  background:linear-gradient(180deg,rgba(55,117,150,.4),rgba(72,119,138,.19));
+}
+:root[data-theme="light"] #experience .career-segment>span{
+  background:linear-gradient(180deg,#4D9EBE,#2B7899);
+  box-shadow:0 0 8px rgba(72,151,185,.38);
+}
+:root[data-theme="light"] #experience .timeline-item>details.operations-detail{
+  color:#283B49;
+  background:linear-gradient(145deg,#F4E9D7,#DCECF1)!important;
+  border-color:rgba(55,101,127,.44)!important;
+  box-shadow:0 8px 28px rgba(53,86,103,.12);
+}
+:root[data-theme="light"] #experience .timeline-item>details.operations-detail[open]{
+  border-color:#4A90AC!important;
+  box-shadow:0 14px 33px rgba(49,92,117,.16)!important;
+}
+:root[data-theme="light"] #experience .operations-detail summary{
+  background:rgba(167,211,228,.34);
+  color:#2A4759;
+}
+:root[data-theme="light"] #experience .operations-detail summary:is(:hover,:focus-visible){
+  background:rgba(137,191,214,.42);
+}
+:root[data-theme="light"] #experience .operations-detail :is(h3,h4,strong),
+:root[data-theme="light"] #experience .operations-body h2{color:#253B49}
+:root[data-theme="light"] #experience .operations-detail :is(p,li,small){color:#4C6271}
+:root[data-theme="light"] #experience .operations-grid .operations-unit,
+:root[data-theme="light"] #experience .operations-context > *{
+  background:rgba(231,243,245,.83);
+  border-color:rgba(63,103,126,.27);
+}
+
+/* ------------------------------------------------------------
+   EDUCATION: warm ivory academic pathway / glacier accents.
+   Preserve distinct future vs earned credentials.
+   ------------------------------------------------------------ */
+:root[data-theme="light"] #education.education-section{
+  background:
+    radial-gradient(ellipse at 85% 35%,rgba(160,208,226,.56),transparent 46%),
+    linear-gradient(130deg,#E5DAC5,#E4E4D9 63%,#D3E6E8);
+}
+:root[data-theme="light"] #education .academic-orbit{
+  opacity:.51;
+  filter:hue-rotate(26deg) saturate(.78) drop-shadow(0 0 16px rgba(72,125,147,.1));
+}
+:root[data-theme="light"] #education .academic-orbit .orbit-shell::before{border-color:rgba(54,114,145,.27)}
+:root[data-theme="light"] #education .academic-orbit .orbit-shell.is-lit::before{
+  border-color:rgba(34,117,152,.78)!important;
+  box-shadow:0 0 15px rgba(53,125,158,.19),inset 0 0 13px rgba(77,165,198,.1);
+}
+:root[data-theme="light"] #education .learning-journey{
+  background:linear-gradient(125deg,rgba(236,242,236,.95),rgba(188,222,234,.91))!important;
+  border-color:rgba(59,106,127,.39);
+  box-shadow:0 16px 41px rgba(53,82,101,.11);
+  color:#293D4B!important;
+}
+:root[data-theme="light"] #education .learning-journey-heading strong{color:#273D4D}
+:root[data-theme="light"] #education .learning-journey-heading small{color:#566D79}
+:root[data-theme="light"] #education .learning-step{
+  background:linear-gradient(145deg,rgba(249,240,224,.92),rgba(224,241,244,.92));
+  border-color:rgba(58,107,129,.29);
+  color:#263B48;
+}
+:root[data-theme="light"] #education .learning-step.is-future{
+  background:linear-gradient(145deg,rgba(218,233,233,.72),rgba(188,214,227,.73));
+  border-style:dashed;
+  border-color:rgba(52,104,130,.53);
+}
+:root[data-theme="light"] #education .learning-step:is(:hover,:focus-visible,.is-glowing){
+  border-color:#337E9D;
+  box-shadow:0 12px 26px rgba(54,103,126,.18),0 0 15px rgba(96,171,204,.12);
+}
+:root[data-theme="light"] #education .learning-step strong,
+:root[data-theme="light"] #education .learning-step strong .degree-term{color:#253541!important}
+:root[data-theme="light"] #education .learning-step p{color:#4D6778}
+:root[data-theme="light"] #education .learning-step small{color:#2C6E8A}
+:root[data-theme="light"] #education .learning-index,
+:root[data-theme="light"] #education .learning-icon{color:#2E7492}
+:root[data-theme="light"] #education .learning-segment{background:rgba(46,100,127,.23)}
+:root[data-theme="light"] #education .learning-segment i{
+  background:#438EAA;
+  box-shadow:0 0 10px rgba(60,135,172,.3);
+}
+:root[data-theme="light"] #education .learning-journey-footer{color:#4D6574}
+:root[data-theme="light"] #education .school-card,
+:root[data-theme="light"] #education .credentials-card,
+:root[data-theme="light"] #education .prior-education{
+  background:linear-gradient(148deg,#F9F0E1,#E4EFF0);
+  border-color:rgba(57,103,127,.35);
+  color:#263B4A;
+  box-shadow:0 11px 28px rgba(54,86,103,.10);
+}
+:root[data-theme="light"] #education :is(.school-card,.credentials-card,.prior-education):hover{
+  border-color:#397F9B;
+  box-shadow:0 14px 34px rgba(64,104,126,.15);
+}
+:root[data-theme="light"] #education .school-card>p,
+:root[data-theme="light"] #education .prior-education p,
+:root[data-theme="light"] #education .credential div span,
+:root[data-theme="light"] #education .pathway-note p{color:#4E6474}
+:root[data-theme="light"] #education .school-line,
+:root[data-theme="light"] #education .pathway-note>strong{color:#263C4A}
+:root[data-theme="light"] #education .pill-status{
+  color:#2B6A85;
+  background:#D1E7ED;
+  border-color:rgba(55,115,141,.42);
+}
+:root[data-theme="light"] #education .mini-circle,
+:root[data-theme="light"] #education .credential-icon{
+  border-color:rgba(62,115,143,.4);
+  color:#347D9B;
+  background:rgba(208,232,239,.47);
+}
+:root[data-theme="light"] #education .credential strong{color:#293C49}
+:root[data-theme="light"] #education .credential-check{color:#287C8C}
+:root[data-theme="light"] #education .credential{border-bottom-color:rgba(70,107,126,.2)}
+:root[data-theme="light"] #education .learning-key{color:#435D6C}
+
+/* ------------------------------------------------------------
+   CONTACT: a deliberate high-contrast SLATE feature panel.
+   Glacier highlights / silver footer on the ivory canvas.
+   ------------------------------------------------------------ */
+:root[data-theme="light"] #contact.cta-section{
+  background:transparent;
+}
+:root[data-theme="light"] #contact .contact-surface{
+  background:
+    radial-gradient(ellipse at 50% 48%,rgba(106,166,191,.23),transparent 61%),
+    linear-gradient(135deg,#425C6B,#283E4F 65%,#263B4B);
+  border-color:rgba(75,141,170,.64);
+  box-shadow:0 20px 58px rgba(57,82,99,.26);
+  color:#F6F5F0;
+}
+:root[data-theme="light"] #contact .contact-surface:hover{
+  border-color:#70B9D7;
+  box-shadow:0 25px 65px rgba(50,87,106,.29),0 0 35px rgba(95,171,207,.13);
+}
+:root[data-theme="light"] #contact .contact-topline,
+:root[data-theme="light"] #contact .contact-center .eyebrow,
+:root[data-theme="light"] #contact .contact-bottom-block>span{color:#B0DEEF}
+:root[data-theme="light"] #contact .contact-center h2{color:#F8F5EF}
+:root[data-theme="light"] #contact .contact-center h2 em{color:#A3D9F0}
+:root[data-theme="light"] #contact .contact-center>p{color:#D6E5EA}
+:root[data-theme="light"] #contact .contact-bottom{
+  background:rgba(28,46,59,.54);
+  border-color:rgba(171,216,234,.19);
+}
+:root[data-theme="light"] #contact .contact-bottom-block a{color:#F2F8F8}
+:root[data-theme="light"] #contact .contact-bottom-block small,
+:root[data-theme="light"] #contact .contact-mini-brand small{color:#D1E1E6}
+:root[data-theme="light"] #contact .contact-mini-brand strong{color:#F9F7F1}
+:root[data-theme="light"] #contact .contact-mini-brand strong span{color:#A7DDF1}
+:root[data-theme="light"] #contact .contact-edge-waves{color:#498EAE;opacity:.49}
+:root[data-theme="light"] #contact .contact-constellation .contact-graph-line{stroke:#A1D5EA}
+:root[data-theme="light"] #contact .contact-constellation .contact-graph-node{fill:#B7E6F7}
+:root[data-theme="light"] #contact .contact-constellation .contact-traveler{fill:#E6FAFF}
+:root[data-theme="light"] #contact .cta-buttons .btn-primary{
+  background:#A7D9EC;
+  color:#203949;
+  border-color:#A7D9EC;
+  box-shadow:0 8px 27px rgba(101,171,199,.23);
+}
+:root[data-theme="light"] #contact .cta-buttons .btn-primary:hover{
+  background:#C1E9F4;
+  box-shadow:0 0 30px rgba(145,215,239,.28);
+}
+:root[data-theme="light"] #contact .cta-buttons .btn-outline{
+  background:rgba(235,246,246,.10);
+  color:#F1F8FA;
+  border-color:rgba(185,224,237,.52);
+}
+:root[data-theme="light"] #contact .cta-buttons .btn-outline:hover{
+  background:rgba(215,241,247,.18);
+}
+
+/* Modals, footer and auxiliary UI stay legible in both modes. */
+:root[data-theme="light"] .modal-panel{
+  background:#F7F0E3;
+  color:#293D4D;
+  border-color:rgba(58,101,120,.44);
+}
+:root[data-theme="light"] .modal-top{
+  background:rgba(244,237,224,.97);
+  border-bottom-color:rgba(65,103,121,.22);
+}
+:root[data-theme="light"] .modal-cover,
+:root[data-theme="light"] .modal-gallery .gallery-main{background:#DAE8EB}
+:root[data-theme="light"] .modal-layer .modal-backdrop{background:rgba(29,46,61,.68)}
+:root[data-theme="light"] .modal-header h2,
+:root[data-theme="light"] .modal-detail-col h3,
+:root[data-theme="light"] .modal-result h3{color:#273A49}
+:root[data-theme="light"] .modal-pills span{color:#45606E}
+:root[data-theme="light"] .footer{border-top-color:rgba(58,98,117,.28)}
+:root[data-theme="light"] .footer p{color:#526776}
+:root[data-theme="light"] .footer-brand{color:#273D4B}
+
+@media(prefers-reduced-motion:reduce){
+  :root[data-theme="light"] *{scroll-behavior:auto}
+}
+
+/* Contrast QA: inherited dark-mode white emphasis must not vanish on ivory. */
+:root[data-theme="light"] #education .school-card .degree-term,
+:root[data-theme="light"] #education .school-card .school-line strong,
+:root[data-theme="light"] #education .pathway-note strong,
+:root[data-theme="light"] #education .school-card>p strong {
+  color:#263B49!important;
+}
+:root[data-theme="light"] #education .school-bottom{color:#577080}
+:root[data-theme="light"] #education .school-bottom span{color:#2F7794}
+:root[data-theme="light"] #education .school-card>p span{color:#47768B}
+
+/* Near-black reading text lets the warm light surfaces carry the contrast. */
+:root[data-theme="light"] .hero-lede,
+:root[data-theme="light"] .hero-copy p,
+:root[data-theme="light"] .hero-meta,
+:root[data-theme="light"] .opening-screen .metric-content>span,
+:root[data-theme="light"] .project-card p,
+:root[data-theme="light"] .project-card-body p,
+:root[data-theme="light"] .project-card .project-meta,
+:root[data-theme="light"] .flagship-explainer,
+:root[data-theme="light"] #expertise .expertise-intro p,
+:root[data-theme="light"] #expertise .expertise-card p,
+:root[data-theme="light"] #experience .timeline-item .job-content>p:not(.job-company),
+:root[data-theme="light"] #experience .operations-detail :is(p,li,small),
+:root[data-theme="light"] #education .school-card>p,
+:root[data-theme="light"] #education .prior-education p,
+:root[data-theme="light"] #education .credential div span,
+:root[data-theme="light"] #education .pathway-note p,
+:root[data-theme="light"] #education .learning-step p,
+:root[data-theme="light"] #education .learning-journey-footer {
+  color:#202B33;
+}
+
+/* Chapter transition: replace inherited teal accents with ice / steel / ink. */
+:root[data-theme="light"] .chapter-deck-fx{color:#536675}
+:root[data-theme="light"] .chapter-deck-fx .deck-screen-tint{
+  background:linear-gradient(90deg,transparent 20%,rgba(146,194,210,.22) 49%,transparent 79%);
+}
+:root[data-theme="light"] .chapter-deck-fx .deck-sweep{
+  background:linear-gradient(180deg,transparent 2%,rgba(183,213,222,.58) 17%,#7896A2 50%,rgba(183,213,222,.62) 78%,transparent 98%);
+  box-shadow:0 0 12px rgba(83,102,117,.4),0 0 45px rgba(120,150,162,.22);
+}
+:root[data-theme="light"] .chapter-deck-fx .deck-sweep::after{
+  background:linear-gradient(90deg,transparent,rgba(245,249,246,.72),transparent);
+  box-shadow:0 0 22px rgba(83,102,117,.28);
+}
+:root[data-theme="light"] .chapter-deck-fx .deck-label{
+  text-shadow:0 1px 0 rgba(248,244,233,.9),0 0 24px rgba(245,242,230,.9);
+}
+:root[data-theme="light"] .chapter-deck-fx .deck-label .deck-eyebrow,
+:root[data-theme="light"] .chapter-deck-fx .deck-label .deck-name{
+  color:#172630;
+  text-shadow:0 1px 0 rgba(248,244,233,.95),0 0 18px rgba(248,244,233,.78);
+}
+:root[data-theme="light"] .chapter-deck-fx .deck-label .deck-line{
+  background:#536675;
+  box-shadow:0 0 12px rgba(83,102,117,.36);
+}
+:root[data-theme="light"] body.chapter-nav-enabled .chapter-position{
+  background:rgba(245,239,225,.97);
+  border-color:rgba(83,102,117,.5);
+  color:#172630;
+  box-shadow:0 8px 22px rgba(37,53,65,.14),inset 0 1px rgba(255,255,255,.8);
+}
+:root[data-theme="light"] .chapter-route-label{color:#172630}
+:root[data-theme="light"] .chapter-progress i{
+  background:rgba(83,102,117,.42);
+}
+:root[data-theme="light"] .chapter-progress i.is-current{
+  background:#536675;
+  box-shadow:0 0 8px rgba(83,102,117,.3);
+}

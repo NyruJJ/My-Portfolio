@@ -1,0 +1,186 @@
+/* Portfolio 2.0 — Horizontal Chapters prototype.
+   Arrows switch independent chapters. Inside a chapter, vertical scrolling is
+   fully native. Homepage graphics and stat banner are unchanged from v10. */
+
+html.chapter-navigation-enabled,
+html.chapter-navigation-enabled body{
+  scroll-snap-type:none!important;
+  scroll-behavior:auto!important;
+}
+html.chapter-navigation-enabled body.chapter-nav-enabled #main > :not(.chapter-active):not(.chapter-leaving){
+  display:none!important;
+}
+html.chapter-navigation-enabled body.chapter-nav-enabled #main > .chapter-active:not(.opening-screen){
+  display:block!important;
+  min-height:100svh;
+}
+html.chapter-navigation-enabled body.chapter-nav-enabled:not(.chapter-contact) > .footer{
+  display:none!important;
+}
+html.chapter-navigation-enabled body.chapter-nav-enabled #main > .chapter-active.chapter-arrive{
+  animation:chapter-arrive-from-right .49s cubic-bezier(.19,.73,.17,1) both;
+}
+html.chapter-navigation-enabled body.chapter-nav-enabled #main > .chapter-active.chapter-arrive-reverse{
+  animation:chapter-arrive-from-left .49s cubic-bezier(.19,.73,.17,1) both;
+}
+@keyframes chapter-arrive-from-right{
+  from{opacity:.28;transform:translate3d(24px,0,0)}
+  to{opacity:1;transform:translate3d(0,0,0)}
+}
+@keyframes chapter-arrive-from-left{
+  from{opacity:.28;transform:translate3d(-24px,0,0)}
+  to{opacity:1;transform:translate3d(0,0,0)}
+}
+
+/* Bring back content normally deferred until intersection in sections that
+   were display:none; individual cards still have their normal hover effects. */
+html.chapter-navigation-enabled .chapter-active.gallery-enter,
+html.chapter-navigation-enabled .chapter-active.gallery-past{
+  opacity:1!important;
+  transform:translateZ(0)!important;
+}
+
+.chapter-home-button{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  border-radius:14px;
+  padding:0 14px;
+  height:48px;
+  border:1px solid rgba(92,205,207,.26);
+  background:linear-gradient(180deg,rgba(6,18,30,.78),rgba(4,13,23,.60));
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  font:700 11px/1 'DM Sans',sans-serif;
+  letter-spacing:.045em;
+  color:var(--text);
+  cursor:pointer;
+  box-shadow:0 8px 18px rgba(0,0,0,.12);
+  transition:border-color .25s ease,box-shadow .25s ease,color .25s ease;
+}
+.chapter-home-button svg{width:16px;height:16px;color:#7fdcd1}
+.chapter-home-button:hover,
+.chapter-home-button:focus-visible{
+  color:var(--aqua);
+  border-color:rgba(96,231,222,.55);
+  box-shadow:0 0 15px rgba(72,230,207,.14);
+}
+body.chapter-home .chapter-home-button{border-color:rgba(92,205,207,.32)}
+
+.chapter-arrows{position:fixed;inset:0;z-index:115;pointer-events:none}
+.chapter-arrow{
+  position:absolute;
+  top:50%;
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  min-height:62px;
+  border:1px solid rgba(87,214,211,.22);
+  border-radius:18px;
+  background:linear-gradient(155deg,rgba(7,24,39,.74),rgba(3,15,26,.55));
+  color:#d5f2f2;
+  backdrop-filter:blur(9px);
+  -webkit-backdrop-filter:blur(9px);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.03);
+  pointer-events:auto;
+  cursor:pointer;
+  transform:translateY(-50%);
+  transition:border-color .22s ease,background .22s ease,box-shadow .22s ease;
+  padding:0 12px;
+  max-width:146px;
+}
+.chapter-arrow:hover,.chapter-arrow:focus-visible{
+  border-color:rgba(91,230,215,.7);
+  background:linear-gradient(155deg,rgba(12,53,68,.89),rgba(5,29,45,.75));
+  box-shadow:0 0 23px rgba(67,225,206,.12);
+}
+.chapter-arrow-prev{left:clamp(7px,1.25vw,25px)}
+.chapter-arrow-next{right:clamp(7px,1.25vw,25px)}
+.chapter-arrow-glyph{
+  color:var(--aqua);
+  font:300 39px/1 'Space Grotesk',sans-serif;
+  transform:translateY(-3px);
+  transition:transform .2s ease;
+}
+.chapter-arrow-prev:hover .chapter-arrow-glyph{transform:translate(-3px,-3px)}
+.chapter-arrow-next:hover .chapter-arrow-glyph{transform:translate(3px,-3px)}
+.chapter-arrow-copy{
+  display:block;
+  opacity:0;
+  max-width:0;
+  overflow:hidden;
+  white-space:nowrap;
+  font:800 10px/1 'DM Sans',sans-serif;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  transition:opacity .22s ease,max-width .25s ease;
+}
+.chapter-arrow:hover .chapter-arrow-copy,.chapter-arrow:focus-visible .chapter-arrow-copy{
+  opacity:1;
+  max-width:104px;
+}
+.chapter-position{
+  position:absolute;
+  bottom:clamp(18px,3vh,31px);
+  left:50%;
+  transform:translateX(-50%);
+  padding:7px 15px;
+  border:1px solid rgba(74,201,196,.20);
+  border-radius:20px;
+  background:rgba(4,19,30,.56);
+  font:800 9px/1.1 'DM Sans',sans-serif;
+  letter-spacing:.19em;
+  color:#77b9be;
+  white-space:nowrap;
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+}
+/* Don't overlay the approved homepage glass stats banner. */
+body.chapter-home .chapter-position{display:none}
+
+@media(min-width:1280px){
+  .chapter-arrow{min-height:66px}
+}
+@media(max-width:960px){
+  .chapter-arrow{min-height:52px;border-radius:13px;padding:0 11px}
+  .chapter-arrow-glyph{font-size:30px}
+  .chapter-position{bottom:12px}
+  .chapter-arrow-copy{display:none}
+}
+@media(max-width:680px){
+  .chapter-home-button{min-width:43px;padding:0 11px;height:43px}
+  .chapter-home-button span{display:none}
+  .chapter-arrows .chapter-arrow{top:auto;bottom:24px;transform:none;min-height:42px;background:rgba(7,26,42,.91)}
+  .chapter-arrows .chapter-arrow-prev{left:15px}
+  .chapter-arrows .chapter-arrow-next{right:15px}
+  .chapter-position{bottom:35px;font-size:8px;padding:6px 10px}
+  body.chapter-home .chapter-position{display:none}
+  .sheikah-controls{gap:5px}
+  .sheikah-header{padding-inline:9px}
+  .sheikah-theme{height:43px;min-width:40px;padding-inline:10px}
+  .sheikah-trigger{height:43px;min-width:110px;padding-inline:10px}
+}
+@media(max-width:440px){
+  .sheikah-brand{padding:8px 7px}
+  .sheikah-brand-title{font-size:9px}
+  .sheikah-brand-dot{display:none}
+  .sheikah-theme #theme-word{display:none}
+  .sheikah-theme{padding-inline:10px;min-width:36px}
+  .sheikah-trigger{min-width:100px;gap:7px}
+}
+@media(prefers-reduced-motion:reduce){
+  html.chapter-navigation-enabled body.chapter-nav-enabled #main>.chapter-active{animation:none!important;transition:none!important}
+  .chapter-arrow, .chapter-arrow-glyph,.chapter-arrow-copy,.chapter-home-button{transition:none!important}
+}
+
+/* The compact Rune Explorer occupies the upper right on inside pages. Keep
+   the chapter arrows below it, so neither control can cover the other. */
+body.chapter-nav-enabled:not(.chapter-home) .chapter-arrow{
+  top:auto;
+  bottom:clamp(18px,2.6vh,30px);
+  transform:none;
+  min-height:51px;
+}
+body.chapter-nav-enabled:not(.chapter-home) .chapter-arrow-prev{left:clamp(12px,2.4vw,34px)}
+body.chapter-nav-enabled:not(.chapter-home) .chapter-arrow-next{right:clamp(12px,2.4vw,34px)}

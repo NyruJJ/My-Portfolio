@@ -1,0 +1,29 @@
+/* Portfolio 2.0 — Glass Stats / Navigation Refresh: all overlays intentional */
+/* Header: unboxed, offset editorial navigation with a slim teal rail. */
+.header{background:rgba(3,13,26,.92)!important;border:0!important;border-bottom:1px solid rgba(67,125,144,.18)!important;box-shadow:0 8px 32px rgba(0,0,0,.08)!important;}
+.header::after{content:"";position:absolute;bottom:0;left:3%;right:3%;height:1px;background:linear-gradient(90deg,transparent,rgba(69,233,205,.50) 22%,transparent 47%,rgba(69,233,205,.22) 75%,transparent);pointer-events:none}
+@media(min-width:961px){
+.header-inner{height:78px!important;max-width:1700px!important;padding-inline:clamp(26px,4vw,82px)!important;display:grid!important;grid-template-columns:minmax(230px,1fr) auto minmax(230px,1fr)!important;gap:24px!important;align-items:center!important;}
+.primary-nav{justify-self:center;display:flex!important;gap:clamp(15px,2vw,30px)!important;align-items:center;}
+.primary-nav a,.primary-nav a+a{padding:9px 2px!important;font-size:12px!important;font-weight:700!important;letter-spacing:.025em!important;border:0!important;color:var(--muted)!important;transition:color .2s ease!important;}
+.primary-nav a::after{height:1px!important;bottom:1px!important;background:var(--aqua)!important;transform-origin:center!important}
+.primary-nav a:hover,.primary-nav a.active{color:var(--text)!important}
+.header-controls{justify-self:end;display:flex;align-items:center;gap:20px!important;}
+.header-contact{padding:10px 0!important;border:0!important;border-radius:0!important;background:transparent!important;color:var(--text)!important;font-size:12px!important;font-weight:800!important;}
+.header-contact:hover{color:var(--aqua)!important;background:transparent!important}
+.header-contact span{font-size:14px;margin-left:10px!important;}
+}
+/* An always-readable theme label next to the icon. */
+.icon-button.theme-toggle{width:auto!important;min-width:71px!important;display:flex!important;align-items:center;justify-content:center;gap:9px;padding:7px 4px!important;border:0!important;white-space:nowrap;}
+.icon-button.theme-toggle svg{width:19px;min-width:19px;height:19px;}
+.theme-word{font-size:11px;font-weight:750;letter-spacing:.03em;color:var(--muted);}
+.icon-button.theme-toggle:hover .theme-word{color:var(--aqua)}
+/* Glass stats bar; hovered numbers lift as before. */
+.opening-screen>.metrics-wrap{background:rgba(12,35,55,.72)!important;backdrop-filter:blur(15px);-webkit-backdrop-filter:blur(15px);border-top:1px solid rgba(115,209,210,.20)!important;border-bottom:1px solid rgba(100,190,192,.18)!important;box-shadow:inset 0 1px rgba(255,255,255,.035),0 6px 24px rgba(0,0,0,.06)!important;}
+.opening-screen .metrics{border:0!important;padding-block:14px 11px!important;gap:clamp(12px,2.5vw,42px)!important;}
+.opening-screen .metric{position:relative!important;padding-top:15px!important;}
+.opening-screen .metric::before{content:""!important;position:absolute!important;display:block!important;top:0!important;left:50%!important;width:38px!important;height:2px!important;background:var(--aqua)!important;opacity:.8!important;border-radius:4px;transform:translateX(-50%) scaleX(1)!important;transform-origin:center!important;transition:width .38s cubic-bezier(.2,.8,.2,1),opacity .25s ease,box-shadow .25s ease!important;}
+.opening-screen .metric:hover::before,.opening-screen .metric:focus-within::before{width:min(88%,215px)!important;opacity:1!important;box-shadow:0 0 13px rgba(71,242,214,.45)!important;}
+.opening-screen .metric:hover{transform:translateY(-3px)!important}
+@media(max-width:960px){.header-inner{gap:10px!important}.header-controls{gap:5px!important}.theme-word{font-size:10px}.opening-screen>.metrics-wrap{background:rgba(12,35,55,.72)!important}.opening-screen .metric::before{display:block!important;width:26px!important}.opening-screen .metric:hover::before{width:70%!important}}
+@media(prefers-reduced-motion:reduce){.opening-screen .metric,.opening-screen .metric::before{transition:none!important}}

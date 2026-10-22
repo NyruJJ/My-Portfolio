@@ -1,0 +1,149 @@
+/* Portfolio 2.0 v15 — carefully scoped interior chapter enhancements.
+   Home and the Projects chapter keep their established visual treatment. */
+
+/* Shorter, readable chapter destination title: 1.34s instead of v14's 1.73s. */
+.chapter-deck-fx.is-playing .deck-label{
+  animation:deck-label-hold-v15 1340ms ease-out both!important;
+}
+@keyframes deck-label-hold-v15{
+  0%{opacity:0;transform:translate(-50%,-43%) scale(.97)}
+  18%{opacity:0;transform:translate(-50%,-48%) scale(.985)}
+  32%,73%{opacity:.98;transform:translate(-50%,-50%) scale(1)}
+  100%{opacity:0;transform:translate(-50%,-55%) scale(1.012)}
+}
+
+/* Body copy improvement, without altering oversized headings or Projects. */
+#expertise .expertise-card p{font-size:clamp(12.5px,.94vw,14px);line-height:1.85}
+#expertise .expertise-card .tag-list span{font-size:10px;padding:6px 8px}
+#expertise .expertise-intro p{font-size:clamp(14px,1.1vw,15px);line-height:1.83}
+#experience .job-content>p:not(.job-company){font-size:clamp(13px,1.05vw,14px);line-height:1.85}
+#experience .job-company{font-size:13px}
+#experience .operations-body p,#experience .tt-overview p{font-size:clamp(12.5px,.95vw,13.5px);line-height:1.75}
+#experience .operations-detail summary{font-size:13px}
+#experience .job-tags span{font-size:10px}
+#experience .job-time{font-size:11px}
+#education .school-card>p{font-size:13.5px;line-height:1.7}
+#education .school-line{font-size:13px}
+#education .school-card-pathway .pathway-note p{font-size:12px}
+#education .credential div span{font-size:11px}
+#education .prior-education p{font-size:12px;line-height:1.65}
+#contact .cta-inner>div>p{font-size:clamp(13px,.99vw,14px)}
+#contact .email-fallback{font-size:12px}
+
+/* Expertise: skill category illuminates corresponding segment in the existing
+   illustrative network map. Nothing continuously moves while reading. */
+#expertise .expertise-network-panel{transition:border-color .4s ease,box-shadow .4s ease}
+#expertise .diagram-lines path{stroke-width:2;opacity:.44;transition:opacity .34s ease,stroke-width .34s ease,filter .34s ease}
+#expertise .diagram-node.small{opacity:.68;transition:opacity .34s ease,filter .34s ease}
+#expertise .expertise-network-panel.is-linked{border-color:rgba(85,237,202,.47);box-shadow:0 18px 42px rgba(0,0,0,.17),0 0 29px rgba(55,196,185,.08)}
+#expertise .expertise-network-panel.is-linked .diagram-lines path{opacity:.15}
+#expertise .expertise-network-panel.is-linked .diagram-node.small{opacity:.38}
+#expertise .expertise-network-panel.is-linked .diagram-lines path.is-signal{
+  opacity:1;stroke-width:3.4;filter:drop-shadow(0 0 5px rgba(85,237,202,.66));
+  stroke-dasharray:9 6;animation:skill-signal 1.05s linear 1;
+}
+#expertise .expertise-network-panel.is-linked .diagram-node.small.is-signal{
+  opacity:1;filter:drop-shadow(0 0 9px rgba(85,237,202,.55));
+}
+@keyframes skill-signal{from{stroke-dashoffset:32}to{stroke-dashoffset:0}}
+#expertise .expertise-card{transition:border-color .3s ease,transform .32s ease,box-shadow .32s ease}
+#expertise .expertise-card.is-linked{
+  border-color:rgba(85,237,202,.55);
+  box-shadow:0 12px 30px rgba(0,0,0,.12),0 0 17px rgba(72,213,203,.07);
+}
+#expertise .expertise-card.is-linked .expertise-symbol{color:var(--aqua)}
+
+/* Experience: trace beside the timeline, with an active job marker. The rail is
+   outside of all content/popouts, so the two expandable case-study sections work. */
+#experience .timeline{
+  position:relative;
+  padding-left:clamp(20px,2.2vw,30px);
+  --career-progress:0;
+}
+#experience .timeline::before,#experience .timeline::after{
+  content:"";position:absolute;left:7px;top:32px;width:2px;
+  border-radius:5px;pointer-events:none;
+}
+#experience .timeline::before{bottom:30px;background:rgba(105,203,204,.20)}
+#experience .timeline::after{
+  height:var(--career-progress-height,0px);
+  background:linear-gradient(180deg,#6af1dc,#138d99);
+  box-shadow:0 0 11px rgba(78,231,213,.3);
+  transition:height .18s linear;
+}
+#experience .timeline-item{position:relative;transition:background-color .35s ease}
+#experience .timeline-item::before{
+  content:"";position:absolute;top:38px;left:calc(1px - clamp(20px,2.2vw,30px));
+  height:14px;width:14px;border-radius:50%;box-sizing:border-box;
+  border:2px solid rgba(98,201,203,.57);
+  background:#092637;
+  transition:background .28s ease,border-color .28s ease,box-shadow .28s ease,transform .28s ease;
+  z-index:2;
+}
+#experience .timeline-item.is-career-active::before,
+#experience .timeline-item:has(details[open])::before{
+  background:var(--aqua);border-color:#86f7e6;box-shadow:0 0 0 5px rgba(67,225,202,.10),0 0 17px rgba(67,225,202,.4);
+  transform:scale(1.04);
+}
+#experience .timeline-item.is-career-active .job-time{color:#69eccc}
+#experience details.operations-detail{position:relative;z-index:1}
+#experience details.operations-detail[open]{border-color:rgba(85,237,202,.37)}
+
+/* Education: clearly labeled present and prospective MIS stage. */
+#education .academic-path{
+  display:grid;grid-template-columns:minmax(0,1fr) 52px minmax(0,1fr);
+  align-items:center;gap:8px;margin-top:25px;padding:18px 12px 15px;
+  border:1px solid var(--line2);background:rgba(27,112,122,.055);border-radius:10px;
+}
+#education .academic-stage{position:relative;display:flex;flex-direction:column;gap:6px;padding-left:16px;min-width:0}
+#education .academic-stage>.academic-node{
+  position:absolute;left:0;top:2px;width:9px;height:9px;border-radius:50%;
+  background:var(--aqua);box-shadow:0 0 0 4px rgba(85,237,202,.1);
+}
+#education .academic-stage.is-next>.academic-node{background:transparent;border:1px solid var(--aqua);box-shadow:none}
+#education .academic-stage>span:not(.academic-node){font-size:9px;font-weight:800;letter-spacing:.16em;color:var(--aqua)}
+#education .academic-stage strong{font-family:'Space Grotesk',sans-serif;font-size:clamp(11px,1vw,14px);line-height:1.4;color:var(--text)}
+#education .academic-stage small{font-size:10px;line-height:1.5;color:var(--muted)}
+#education .academic-connector{height:2px;position:relative;background:linear-gradient(90deg,var(--aqua),rgba(85,237,202,.25))}
+#education .academic-connector::after{content:'›';position:absolute;right:-3px;top:-11px;color:var(--aqua);font-size:20px}
+#education .school-card-pathway:hover .academic-connector{box-shadow:0 0 11px rgba(85,237,202,.3)}
+#education .credentials-card .credential{transition:background .23s ease,transform .23s ease;padding-inline:8px;margin-inline:-8px;border-radius:6px}
+#education .credentials-card .credential:hover{background:rgba(48,166,161,.065);transform:translateX(3px)}
+#education .credentials-card .credential:not(:has(.credential-check)){opacity:.75}
+#education .school-card-pathway .pathway-note{margin-top:16px}
+
+/* Contact: almost-static signal rings, with one short pulse on primary-button
+   hover/focus. No animation while the visitor reads the page. */
+#contact .cta-inner{isolation:isolate}
+#contact .cta-inner>div:not(.contact-signal){position:relative;z-index:2}
+#contact .contact-signal{
+  position:absolute;z-index:0;right:4%;top:50%;transform:translateY(-50%);
+  width:clamp(210px,30vw,450px);aspect-ratio:1;pointer-events:none;
+  opacity:.6;
+}
+#contact .contact-signal span{
+  position:absolute;inset:18%;border-radius:50%;border:1px solid rgba(99,237,219,.09);
+}
+#contact .contact-signal span:nth-child(2){inset:5%;border-color:rgba(99,237,219,.07)}
+#contact .contact-signal span:nth-child(3){inset:-10%;border-color:rgba(99,237,219,.045)}
+#contact .cta-inner:has(.btn-primary:is(:hover,:focus-visible)) .contact-signal span{
+  animation:contact-once 1.25s ease-out 1;
+}
+#contact .cta-inner:has(.btn-primary:is(:hover,:focus-visible)) .contact-signal span:nth-child(2){animation-delay:.12s}
+#contact .cta-inner:has(.btn-primary:is(:hover,:focus-visible)) .contact-signal span:nth-child(3){animation-delay:.24s}
+@keyframes contact-once{0%{opacity:.18;transform:scale(.96)}42%{opacity:.66;border-color:rgba(99,237,219,.34)}100%{opacity:1;transform:scale(1);border-color:rgba(99,237,219,.08)}}
+
+@media(max-width:750px){
+  #experience .timeline{padding-left:21px}
+  #experience .timeline-item::before{left:-21px}
+  #education .academic-path{grid-template-columns:1fr;gap:13px;padding:15px}
+  #education .academic-connector{width:2px;height:22px;margin-left:4px;background:linear-gradient(var(--aqua),rgba(85,237,202,.25))}
+  #education .academic-connector::after{transform:rotate(90deg);right:-7px;top:9px}
+  #contact .contact-signal{right:-10%;width:280px;opacity:.35}
+}
+@media(prefers-reduced-motion:reduce){
+  #expertise .expertise-network-panel.is-linked .diagram-lines path.is-signal,
+  #contact .cta-inner:has(.btn-primary:is(:hover,:focus-visible)) .contact-signal span{animation:none!important}
+  #experience .timeline::after,#expertise .diagram-lines path,#expertise .diagram-node.small{transition:none!important}
+  .chapter-deck-fx.is-playing .deck-label{animation:none!important}
+}

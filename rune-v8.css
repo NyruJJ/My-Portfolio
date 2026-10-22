@@ -1,0 +1,204 @@
+/* V8 targeted fixes only: navigation handoff and the four-stat glass banner. */
+
+/* The native user scroll remains normal. The menu transition isn't controlled by scroll progress. */
+.rune-selector:not(.rune-compact),
+.rune-selector.rune-compact {
+  transition:opacity .29s ease, clip-path .34s cubic-bezier(.25,.8,.25,1),
+    transform .34s cubic-bezier(.25,.8,.25,1), visibility 0s linear .34s !important;
+}
+/* Large palette disappears cleanly from its top edge downward. */
+body.rune-mode-home.rune-is-open .rune-selector:not(.rune-compact) {
+  opacity:1!important;
+  visibility:visible!important;
+  pointer-events:auto!important;
+  clip-path:inset(0 0 0 0)!important;
+  transform:translate(-50%,0) scale(1)!important;
+  transition-delay:0s!important;
+}
+body.rune-mode-side .rune-selector:not(.rune-compact),
+body.rune-is-closed .rune-selector:not(.rune-compact) {
+  opacity:0!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+  clip-path:inset(100% 0 0 0)!important;
+  transform:translate(-50%,0) scale(1)!important;
+}
+/* Side palette reveals from the right, with opacity increasing at the same time. */
+body.rune-mode-side.rune-is-open .rune-selector.rune-compact {
+  opacity:1!important;
+  visibility:visible!important;
+  pointer-events:auto!important;
+  clip-path:inset(0 0 0 0)!important;
+  transform:translateX(0)!important;
+  transition-delay:0s!important;
+}
+body.rune-mode-home .rune-selector.rune-compact,
+body.rune-is-closed .rune-selector.rune-compact {
+  opacity:0!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+  clip-path:inset(0 0 0 100%)!important;
+  transform:translateX(12px)!important;
+}
+@media(prefers-reduced-motion:reduce){
+  .rune-selector:not(.rune-compact),.rune-selector.rune-compact {transition:none!important}
+}
+
+/* Translucent stats: the hero's black grid remains visible through AND below. */
+.opening-screen {
+  height:100svh!important;
+  min-height:100svh!important;
+  box-sizing:border-box!important;
+  padding-bottom:clamp(16px,2vh,23px)!important;
+}
+.opening-screen>.hero {min-height:0!important;flex:1 1 auto!important;}
+.opening-screen>.metrics-wrap {
+  flex:0 0 auto!important;
+  margin:0!important;
+  background:rgba(9,31,48,.12)!important;
+  -webkit-backdrop-filter:blur(2px) saturate(1.12)!important;
+  backdrop-filter:blur(2px) saturate(1.12)!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.035),inset 0 -1px 0 rgba(255,255,255,.025)!important;
+  border-block:1px solid rgba(98,214,211,.18)!important;
+}
+.opening-screen>.metrics-wrap::before {
+  opacity:.24!important;
+  background:linear-gradient(90deg,rgba(66,214,201,.024),rgba(28,123,162,.024),rgba(66,214,201,.024))!important;
+}
+.opening-screen .metrics {
+  display:grid!important;
+  grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  align-items:center!important;
+  gap:0!important;
+  padding:20px clamp(20px,3.3vw,46px) 19px!important;
+}
+.opening-screen .metric {
+  position:relative!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  min-width:0;
+  padding:16px clamp(12px,1.5vw,23px) 8px!important;
+  border:0!important;
+}
+.opening-screen .metric::before {display:none!important}
+.opening-screen .metric:not(:last-child)::after {
+  content:"";
+  position:absolute;
+  right:0;
+  top:18%;bottom:12%;
+  width:1px;
+  background:linear-gradient(180deg,transparent,rgba(143,208,219,.28),transparent)!important;
+}
+.opening-screen .metric-content {
+  position:relative!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:clamp(12px,1vw,18px)!important;
+  width:max-content!important;
+  max-width:100%!important;
+  padding:10px 0 0!important;
+  margin:0 auto!important;
+  white-space:normal;
+}
+.opening-screen .metric-content::before {
+  content:"";
+  position:absolute;
+  left:50%;top:0;
+  transform:translateX(-50%);
+  width:38px;
+  height:2px;
+  background:var(--aqua);
+  border-radius:999px;
+  box-shadow:0 0 11px rgba(73,231,210,.23);
+  transition:width .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s ease;
+}
+.opening-screen .metric:hover .metric-content::before {
+  width:90%;
+  box-shadow:0 0 14px rgba(73,231,210,.51);
+}
+.opening-screen .metric-content>strong {
+  display:block!important;
+  flex:0 0 auto!important;
+  min-width:0!important;
+  font-size:clamp(34px,2.75vw,45px)!important;
+  letter-spacing:-.055em;
+  line-height:1.1;
+  text-align:left!important;
+  white-space:nowrap;
+}
+.opening-screen .metric-content>strong span {font-size:.62em;vertical-align:.28em;color:var(--aqua)}
+.opening-screen .metric-content>span {
+  display:block!important;
+  color:var(--muted);
+  font-size:clamp(10px,.88vw,12px)!important;
+  font-weight:600;
+  line-height:1.55!important;
+  white-space:normal;
+  text-align:left;
+}
+@media(max-width:960px){
+  .opening-screen{height:auto!important;min-height:100svh!important}
+  .opening-screen .metrics{grid-template-columns:repeat(2,minmax(0,1fr))!important;row-gap:8px!important}
+  .opening-screen .metric:nth-child(2n)::after{display:none!important}
+}
+@media(max-width:700px){
+  .opening-screen .metrics{grid-template-columns:1fr!important;gap:0!important}
+  .opening-screen .metric{justify-content:flex-start!important;min-height:auto!important;padding:17px 12px 12px!important}
+  .opening-screen .metric::after{display:none!important}
+  .opening-screen .metric-content{margin:0!important}
+}
+
+
+/* V9: low-key living borders, applied to both Explorer layouts.
+   Animate light intensity only; keep menu geometry stable. */
+@keyframes explorer-border-breathe {
+  0%, 100% {
+    border-color:rgba(76,208,205,.48);
+    box-shadow:0 16px 50px rgba(0,0,0,.37),
+      inset 0 0 0 2px rgba(52,155,174,.08),
+      0 0 9px rgba(74,235,217,.09);
+  }
+  50% {
+    border-color:rgba(83,233,216,.76);
+    box-shadow:0 16px 50px rgba(0,0,0,.37),
+      inset 0 0 0 2px rgba(52,155,174,.16),
+      0 0 23px rgba(74,235,217,.25);
+  }
+}
+body.rune-is-open .rune-selector.open {
+  animation:explorer-border-breathe 5.2s ease-in-out infinite !important;
+}
+/* Keep the cyan accent also subtly alive, without flashing. */
+@keyframes explorer-corner-breathe {
+  0%,100% {opacity:.50}
+  50% {opacity:.85}
+}
+body.rune-is-open .rune-selector.open::before,
+body.rune-is-open .rune-selector.open::after {
+  animation:explorer-corner-breathe 5.2s ease-in-out infinite;
+}
+
+/* Glass stats: navy-teal wash with a small atmospheric turquoise glow,
+   while preserving the grid visible under the banner and in the bottom gap. */
+.opening-screen>.metrics-wrap {
+  background:linear-gradient(180deg,
+    rgba(13,45,64,.32), rgba(8,30,49,.26))!important;
+  -webkit-backdrop-filter:blur(2.5px) saturate(1.16)!important;
+  backdrop-filter:blur(2.5px) saturate(1.16)!important;
+  border-top-color:rgba(99,222,213,.22)!important;
+  border-bottom-color:rgba(99,222,213,.19)!important;
+}
+.opening-screen>.metrics-wrap::before {
+  opacity:1!important;
+  background:
+    radial-gradient(ellipse 26% 130% at 18% 56%,rgba(41,157,162,.10),transparent 75%),
+    radial-gradient(ellipse 28% 140% at 68% 50%,rgba(45,181,173,.14),transparent 75%),
+    linear-gradient(90deg,rgba(68,210,196,.02),rgba(16,85,126,.035),rgba(68,210,196,.02))!important;
+}
+@media (prefers-reduced-motion:reduce) {
+  body.rune-is-open .rune-selector.open,
+  body.rune-is-open .rune-selector.open::before,
+  body.rune-is-open .rune-selector.open::after {animation:none!important}
+}

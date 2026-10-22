@@ -322,8 +322,13 @@ try{
   window.setTimeout(()=>themeToggle.classList.add('theme-nudge'),700);
   window.setTimeout(()=>themeToggle.classList.remove('theme-nudge'),5200);
 }
-const menuToggle=document.getElementById('menu-toggle'),nav=document.getElementById('primary-nav');menuToggle.addEventListener('click',()=>{const isOpen=nav.classList.toggle('open');menuToggle.setAttribute('aria-expanded',String(isOpen));menuToggle.setAttribute('aria-label',isOpen?'Close navigation':'Open navigation')});nav.addEventListener('click',e=>{if(e.target.closest('a')){nav.classList.remove('open');menuToggle.setAttribute('aria-expanded','false')}});
-document.getElementById('copy-email').addEventListener('click',()=>copyText('nyruj84@hmail.com','Email address copied'));
+const menuToggle=document.getElementById('menu-toggle'),nav=document.getElementById('primary-nav');
+menuToggle.addEventListener('click',e=>{
+  e.stopPropagation();
+  if(window.setExplorerOpen) window.setExplorerOpen(!nav.classList.contains('open'));
+});
+// Explorer stays open while the page scrolls; only explicit actions close it.
+document.getElementById('copy-email').addEventListener('click',()=>copyText('nyruj84@gmail.com','Email address copied'));
 document.getElementById('year').textContent=new Date().getFullYear();
 renderProjects();syncHash();
 
