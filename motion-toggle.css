@@ -1,0 +1,45 @@
+/* The header control pauses motion while keeping all existing content visible. */
+:root[data-motion="off"] *,
+:root[data-motion="off"] *::before,
+:root[data-motion="off"] *::after {
+  animation: none !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+}
+:root[data-motion="off"] .motion-reveal,
+:root[data-motion="off"] .chapter-life-reveal,
+:root[data-motion="off"] .gallery-panel,
+:root[data-motion="off"] #work .project-group-divider .project-group-line {
+  opacity: 1 !important;
+  transform: none !important;
+  translate: none !important;
+}
+:root[data-motion="off"] .code-stream { opacity: .16 !important; }
+:root[data-motion="off"] .chapter-reading-track { display: none !important; }
+:root[data-motion="off"] .opening-screen .edge-grid-reactive { --light-strength: 0 !important; }
+:root[data-motion="off"] #expertise .signal-dot { opacity: 1 !important; }
+
+/* A brief double ripple marks the moment motion resumes from the play control. */
+.sheikah-motion::before,
+.sheikah-motion::after {
+  content:"";
+  position:absolute;
+  z-index:0;
+  left:12px;
+  top:50%;
+  width:18px;
+  height:18px;
+  border:1px solid rgba(123,235,221,.8);
+  border-radius:50%;
+  opacity:0;
+  pointer-events:none;
+  transform:translateY(-50%) scale(.55);
+}
+.sheikah-motion.is-resuming::before{animation:motion-resume-ripple .86s ease-out forwards}
+.sheikah-motion.is-resuming::after{animation:motion-resume-ripple .86s ease-out .18s forwards}
+@keyframes motion-resume-ripple{
+  0%{opacity:.7;transform:translateY(-50%) scale(.55)}
+  100%{opacity:0;transform:translateY(-50%) scale(3.1)}
+}
+:root[data-theme="light"] .sheikah-motion.is-resuming::before,
+:root[data-theme="light"] .sheikah-motion.is-resuming::after{border-color:rgba(49,120,153,.78)}
